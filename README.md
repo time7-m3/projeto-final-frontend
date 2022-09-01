@@ -92,7 +92,6 @@ Caso dê tudo certo, a resposta será assim:
 
 ## Rotas que precisam de autorização.
 
-<hr>
 
 <h2 align = "center"> Atualizar Usuário </h2>
 
