@@ -6,7 +6,7 @@ Backend da aplicação Alugue meu carro - Uma aplicação que o usuário poderá
 
 ## **Endpoints**
 
-A Api tem 8 endpoints, 4 para os usuários e 4 para os carros, nestes endpoints será possível cadastrar usuário, carros e atc..
+A Api tem 8 endpoints, 4 para os usuários e 4 para os carros, nestes endpoints será possível cadastrar usuário, carros e etc..
 
 A url base da Aṕi é : https://alugue-meu-carro.herokuapp.com
 
