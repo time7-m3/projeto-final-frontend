@@ -6,9 +6,9 @@ Backend da aplicação Alugue meu carro - Uma aplicação que o usuário poderá
 
 ## **Endpoints**
 
-A Api tem 8 endpoints, 4 para os usuários e 4 para os carros, nestes endpoints será possível cadastrar usuário, carros e etc..
+Esta Api tem 8 endpoints, 4 para os usuários e 4 para os carros, nestes endpoints será possível cadastrar usuário, carros e etc..
 
-A url base da Aṕi é : https://alugue-meu-carro.herokuapp.com
+A url base da Api é : https://alugue-meu-carro.herokuapp.com
 
 <h1 align="center">
   Rotas Usuários
@@ -111,7 +111,7 @@ Caso dê tudo certo, a resposta será assim:
 `DELETE /users/id - FORMATO DA REQUISIÇÃO`
 
 ```json
-Não é necessário um corpo na requisição
+Não é necessário um corpo na requisição.
 ```
 
 <h1 align="center">
@@ -168,7 +168,7 @@ Não é necessário um corpo na requisição
 
 O userId se refere ao id do usuário, é necessario passar o id do usuário para poder vincular o carro a ele.
 
-Se o userId não for passado de forma correta retonara este erro.
+Se o userId não for passado de forma correta irá retornar este erro.
 
 ```json
 {
