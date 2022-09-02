@@ -59,6 +59,7 @@ export const FormContainer = styled.form`
     position: relative;
     margin: 0;
     top: -12px;
+    align-self: end;
   }
 
   ${({ errorEmail }) =>
