@@ -1,4 +1,4 @@
-import { PerfilMain } from "./style";
+import { PerfilMain } from "./styles";
 import btnClose from "../../../assets/btnClose.svg";
 import removeIcon from "../../../assets/removeIcon.svg";
 
