@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import toast from "react-hot-toast";
-import api from "../services";
+import api from "../services/api";
 
 export const AuthContext = createContext();
 
@@ -12,6 +12,7 @@ const LoginContext = ({ children }) => {
       .post("/login", data)
       .then((response) => {
         const { accessToken, user } = response.data;
+        console.log(response);
         window.localStorage.setItem("@loginToken", accessToken);
         window.localStorage.setItem("@loginId", user.id);
         toast.success("Usuário Logado com Sucesso!");

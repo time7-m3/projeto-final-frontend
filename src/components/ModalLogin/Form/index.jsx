@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import { yupResolver } from "@hookform/resolvers/yup";
-import schema from "../../../validator/login";
+import schema from "../../../validator/loginSchema";
 
 const Form = () => {
   const {

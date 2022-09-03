@@ -2,19 +2,22 @@ import Global from "./styles/Global";
 import RoutesMain from "./routes";
 import RegisterProvider from "./context/RegisterContext";
 
-
 import "./App.css";
+import LoginContext from "./context/AuthContext";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <div className="App">
-      <RegisterProvider>
-        <Global />
-        <RoutesMain />
-      </RegisterProvider>
+      <LoginContext>
+        <RegisterProvider>
+          <Toaster />
+          <Global />
+          <RoutesMain />
+        </RegisterProvider>
+      </LoginContext>
     </div>
   );
 }
-
 
 export default App;

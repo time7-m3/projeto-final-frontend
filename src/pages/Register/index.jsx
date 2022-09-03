@@ -1,12 +1,13 @@
 import { RegContainer } from "./styles";
 import imageRegister from "../../assets/imageRegister.jpg";
-
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../validator/registerSchema";
 import { useNavigate } from "react-router-dom";
-
+import { useContext } from "react";
+import { RegisterContext } from "../../context/RegisterContext";
 const Register = () => {
+  const { registerUser } = useContext(RegisterContext);
   const {
     register,
     handleSubmit,
@@ -14,9 +15,7 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(registerSchema),
   });
-
   const navigate = useNavigate();
-
   return (
     <RegContainer>
       <div className="divImage">
@@ -24,7 +23,7 @@ const Register = () => {
       </div>
       <div className="registerInputs">
         <h1>Cadastre-se</h1>
-        <form handleSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(registerUser)}>
           <input
             type="text"
             placeholder="Digite seu nome completo"
@@ -55,7 +54,9 @@ const Register = () => {
             {...register("telefone")}
           />
           <span className="errorsSpan">{errors.telefone?.message}</span>
-          <button className="btnCadastrar">Cadastrar</button>
+          <button type="submit" className="btnCadastrar">
+            Cadastrar
+          </button>
         </form>
         <div className="divUserExist">
           <span className="spanUserExist">Já tem cadastro?</span>
@@ -67,5 +68,4 @@ const Register = () => {
     </RegContainer>
   );
 };
-
 export default Register;
