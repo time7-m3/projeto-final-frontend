@@ -138,7 +138,7 @@ Não é necessário um corpo na requisição.
 {
   "período": ["31/08/2022", "09/09/2022"],
   "localizacao": "Rio de Janeiro",
-  "marca": "Renafdfdult",
+  "marca": "Renault",
   "modelo": "Logan",
   "ano": 2019,
   "valor": 70,
@@ -154,7 +154,7 @@ Não é necessário um corpo na requisição.
 {
   "período": ["31/08/2022", "09/09/2022"],
   "localizacao": "Rio de Janeiro",
-  "marca": "Renafdfdult",
+  "marca": "Renault",
   "modelo": "Logan",
   "ano": 2019,
   "valor": 70,
