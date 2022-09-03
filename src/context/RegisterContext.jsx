@@ -5,18 +5,18 @@ import { useNavigate } from "react-router-dom";
 export const RegisterContext = createContext({});
 
 const RegisterProvider = ({ children }) => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const registerUser = (e, data) => {
     console.log(data);
-    // api
-    //   .post("/register", data)
-    //   .then((response) => {
-    //     navigate("/dashboard", { replace: true });
-    //   })
-    //   .catch((err) => ({
-    //     message: console.log(err.response.data),
-    //   }));
+    api
+      .post("/register", data)
+      .then((response) => {
+        navigate("/dashboard", { replace: true });
+      })
+      .catch((err) => ({
+        message: console.log(err.response.data),
+      }));
   };
 
   return (
