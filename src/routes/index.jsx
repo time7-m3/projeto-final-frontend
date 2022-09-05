@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { CardCar } from "../components/CardCarModal";
+import Dashboard from "../components/Dashboard";
 import ModalPerfil from "../components/Dashboard/ModalPerfil";
 import ModalLogin from "../components/ModalLogin";
 import Register from "../pages/Register";
@@ -12,6 +13,7 @@ const RoutesMain = () => {
       <Route path="/perfil" element={<ModalPerfil />} />
       {/*Provisório para testes*/}
       <Route path="/cardcarro" element={<CardCar />} />
+      <Route path="/dash" element={<Dashboard />} />
       {/*Provisório para testes*/}
       <Route path="/register" element={<Register />} />
       <Route path="*" element={<Navigate replace to="/register" />} />

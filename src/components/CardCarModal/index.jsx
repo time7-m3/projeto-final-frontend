@@ -9,7 +9,7 @@ export const CardCar = ({ car }) => {
   useEffect(() => {
     const handleClick = (e) => {
       if (!modalRef.current.contains(e.target)) {
-        setIsModalOpen(false);
+        // setIsModalOpen(false);
       }
     };
 
@@ -19,14 +19,16 @@ export const CardCar = ({ car }) => {
       document.removeEventListener("click", handleClick);
     };
   }, [setIsModalOpen]);
+
   const closeModal = () => {
+    console.log("erro");
     setIsModalOpen(false);
   };
 
   return (
     <>
       {/* BOTÃO DE FECHAR MODAL */}
-      <button onClick={() => setIsModalOpen(!isModalOpen)}></button>
+
       <CarDiv ref={modalRef}>
         <div className="carImageBox">
           <img src={car.imagem} alt={car.marca} className="carImage" />
