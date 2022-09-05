@@ -1,7 +1,7 @@
 import { BiCar, BiLogOut } from "react-icons/bi";
 import { DesktopLoggedStyled } from "./DesktopLoggedStyled";
 import User from "../../../assets/user.jpeg"
-import { useUser } from "../../../context/AuthContext";
+import { useUser } from "../../../context/HeaderContext";
 
 
 const DesktopLogged = () => {

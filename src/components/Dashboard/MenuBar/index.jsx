@@ -5,7 +5,7 @@ import { DesktopLoggedStyled } from "../DesktopLogged/DesktopLoggedStyled"
 import DesktopUnLogged from "../DesktopUnLogged"
 import User from "../../../assets/user.jpeg"
 import { MenuDiv } from "./styles"
-import { useUser } from "../../../context/AuthContext"
+import { useUser } from "../../../context/HeaderContext"
 
 const MenuBar=()=>{
   

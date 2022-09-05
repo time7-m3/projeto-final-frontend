@@ -1,7 +1,7 @@
 
 import "./App.css";
 import Header from "./components/Dashboard/Header";
-import { UserProvider } from "./context/AuthContext";
+import { UserProvider } from "./context/HeaderContext";
 import Dashboard from "./pages/Dashboard";
 
 
