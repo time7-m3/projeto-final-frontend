@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../../../services/api-city";
+import api from "../../../services/api-city";
 import { GrLocation } from "react-icons/gr";
 import { SearchCity } from "./styles";
 import Select from "react-select";

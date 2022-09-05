@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import fipe from "../../../../services/api-fipe";
+import fipe from "../../../services/api-fipe";
 import Select from "./components/select";
 import { Filter } from "./styles";
-import db from "./../../../../services/db";
+import db from "./../../../services/db";
 export default function Filters() {
   const [marca, setMarca] = useState([]);
   const [idMarca, setIdMarca] = useState(1);

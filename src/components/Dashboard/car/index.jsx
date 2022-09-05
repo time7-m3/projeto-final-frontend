@@ -1,8 +1,7 @@
 import { Card } from "./styles";
 import { BiCalendar } from "react-icons/bi";
-import { CardCar } from "../../../CardCarModal";
 import { useContext, useState } from "react";
-import { RentContext } from "../../../../context/RentContext";
+import { RentContext } from "../../../context/RentContext";
 export const Car = ({ car }) => {
   const { setIsModalOpen, setCurrentCar } = useContext(RentContext);
   return (
