@@ -9,11 +9,18 @@ import api from "./../../services/api";
 import { useState, useEffect, useContext } from "react";
 import { RentContext } from "../../context/RentContext";
 import { CardCar } from "./../../components/CardCarModal";
+import { PaymentModal } from "../../components/PaymentModal";
 
 const Dashboard = () => {
   const [carros, setCarros] = useState([]);
-  const { currentCar, setCurrentCar, isModalOpen, setIsModalOpen } =
-    useContext(RentContext);
+  const {
+    currentCar,
+    setCurrentCar,
+    isModalOpen,
+    setIsModalOpen,
+    isPayModal,
+    setIsPayModal,
+  } = useContext(RentContext);
   async function getCarros() {
     await api.get("/cars", {}).then(({ data }) => {
       // console.log("carrros", data);
@@ -49,6 +56,7 @@ const Dashboard = () => {
       </div>
       <main>
         {isModalOpen && <CardCar car={currentCar} />}
+        {isPayModal && <PaymentModal />}
         <ul>
           {carros.map((item) => (
             <Car car={item} />

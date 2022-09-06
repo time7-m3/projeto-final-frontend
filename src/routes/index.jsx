@@ -4,6 +4,7 @@ import Dashboard from "../pages/Dashboard";
 import ModalPerfil from "../components/Dashboard/ModalPerfil";
 import ModalLogin from "../components/ModalLogin";
 import Register from "../pages/Register";
+import { PaymentModal } from "../components/PaymentModal";
 
 const RoutesMain = () => {
   return (
@@ -12,7 +13,7 @@ const RoutesMain = () => {
       {/*Provisório para testes*/}
       <Route path="/perfil" element={<ModalPerfil />} />
       {/*Provisório para testes*/}
-      <Route path="/cardcarro" element={<CardCar />} />
+      <Route path="/pix" element={<PaymentModal />} />
       <Route path="/dashboard" element={<Dashboard />} />
       {/*Provisório para testes*/}
       <Route path="/register" element={<Register />} />
