@@ -10,10 +10,6 @@ export const marcas = [
   "Kia",
   "Hyundai",
 ];
-<<<<<<< HEAD
-=======
-
->>>>>>> d11233413003fab785303559cb2c65333753da21
 export const modelos = [
   { marca: "Fiat", modelo: "Pulse" },
   { marca: "Fiat", modelo: "Toro" },

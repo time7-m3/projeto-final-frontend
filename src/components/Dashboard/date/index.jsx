@@ -1,31 +1,40 @@
-import React, { useState } from "react";
-import "react-dates/initialize";
-import { SingleDatePicker } from "react-dates";
-import moment from "moment";
-import { StyledDatePickerWrapper } from "./styles";
+import React, { useContext } from "react";
+import { Date } from "./styles";
 import "react-dates/lib/css/_datepicker.css";
+import { DashboardContext } from "../../../context/DashboardContext";
 
-const DatePicker = () => {
-  moment.locale("pt-br");
-  const [date, setDate] = useState(moment());
-  const [focused, setFocused] = useState(false);
-  console.log(date.format("DD/MM/YYYY"));
-  // state = {
-  //   focused: false,
-  //   date: moment(),
-  // };
-
+const DateSelect = () => {
+  const {
+    currentDateFrom,
+    setCurrentDateFrom,
+    currentDateTo,
+    setCurrentDateTo,
+  } = useContext(DashboardContext);
   return (
-    <StyledDatePickerWrapper>
-      <SingleDatePicker
-        displayFormat={"DD/MM/YYYY"} // Default: 'MM/DD/YYYY
-        numberOfMonths={1}
-        onDateChange={(date) => setDate(date)}
-        onFocusChange={({ focused }) => setFocused(focused)}
-        focused={focused}
-        date={date}
-      />
-    </StyledDatePickerWrapper>
+    <Date>
+      <div className="dates">
+        <p className="texto-de">De:</p>
+        <input
+          className="input-date"
+          type="date"
+          name=""
+          id=""
+          required
+          value={currentDateFrom}
+          onChange={(event) => setCurrentDateFrom(event.target.value)}
+        />
+        <p className="texto-ate">Até:</p>
+        <input
+          className="input-date"
+          type="date"
+          name=""
+          id=""
+          required
+          value={currentDateTo}
+          onChange={(event) => setCurrentDateTo(event.target.value)}
+        />
+      </div>
+    </Date>
   );
 };
-export default DatePicker;
+export default DateSelect;

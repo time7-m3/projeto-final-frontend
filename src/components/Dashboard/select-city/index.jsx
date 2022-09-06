@@ -6,7 +6,20 @@ import Select from "react-select";
 import { DashboardContext } from "../../../context/DashboardContext";
 
 const SelectSearch = () => {
-  const { setCity } = useContext(DashboardContext);
+  const {
+    currentMarcaCar,
+    setMarcaCurrentCar,
+    currentModeloCar,
+    setModeloCurrentCar,
+    currentAnoCar,
+    setAnoCurrentCar,
+    currentCity,
+    setCity,
+    currentDateFrom,
+    setCurrentDateFrom,
+    currentDateTo,
+    setCurrentDateTo,
+  } = useContext(DashboardContext);
   const [cidade, setCidade] = useState([]);
   async function pegarCidades() {
     await api.get("/cars", {}).then(({ data }) => {
@@ -45,7 +58,7 @@ const SelectSearch = () => {
       </div>
       <div className="select">
         <Select
-          defaultValue="Onde gostaria de alugar?"
+          defaultInputValue={currentCity}
           options={cidade}
           components={{
             DropdownIndicator: () => null,

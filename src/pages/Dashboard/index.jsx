@@ -14,19 +14,36 @@ import { DashboardContext } from "../../context/DashboardContext";
 const Dashboard = () => {
   const { currentCar, isModalOpen } = useContext(RentContext);
   const [carros, setCarros] = useState([]);
-  const { currentCity } = useContext(DashboardContext);
+  const {
+    currentMarcaCar,
+    setMarcaCurrentCar,
+    currentModeloCar,
+    setModeloCurrentCar,
+    currentAnoCar,
+    setAnoCurrentCar,
+    currentCity,
+    setCity,
+    currentDateFrom,
+    setCurrentDateFrom,
+    currentDateTo,
+    setCurrentDateTo,
+  } = useContext(DashboardContext);
+
   async function getCarros() {
     await api.get("/cars", {}).then(({ data }) => {
-      // console.log("carrros", data);
-      setCarros(data);
+      setCarros(
+        data.filter((item) => {
+          if (item.alugado === false) {
+            return item;
+          }
+        })
+      );
     });
   }
   useEffect(() => {
     getCarros();
   }, []);
-
   const [carsFiltrados, setCarsFiltrados] = useState([]);
-
   return (
     <Main>
       <header>header</header>
@@ -42,23 +59,17 @@ const Dashboard = () => {
             <div className="mainHeaderDatesIcon">
               <BiCalendar />
             </div>
-            <span>De:</span>
-            <DatePicker />
-            <span>Até:</span>
             <DatePicker />
           </div>
-
           <div
             className="mainHeaderSearch"
             onClick={() => {
               setCarsFiltrados(
                 carros.filter((elem) => {
-                  //testes//
-
+                  //testes/
                   if (currentCity === "") {
                     return "";
                   } else {
-                    // console.log(elem.localizacao === currentCity);
                     if (elem.localizacao === currentCity) {
                       return elem;
                     }
@@ -66,6 +77,7 @@ const Dashboard = () => {
                   return "";
                 })
               );
+              //setCity("");
             }}
           >
             <FiSearch />

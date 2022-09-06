@@ -5,6 +5,8 @@ const DashboardProvider = ({ children }) => {
   const [currentModeloCar, setModeloCurrentCar] = useState("");
   const [currentAnoCar, setAnoCurrentCar] = useState(0);
   const [currentCity, setCity] = useState("");
+  const [currentDateFrom, setCurrentDateFrom] = useState("");
+  const [currentDateTo, setCurrentDateTo] = useState("");
 
   return (
     <DashboardContext.Provider
@@ -17,6 +19,10 @@ const DashboardProvider = ({ children }) => {
         setAnoCurrentCar,
         currentCity,
         setCity,
+        currentDateFrom,
+        setCurrentDateFrom,
+        currentDateTo,
+        setCurrentDateTo,
       }}
     >
       {children}

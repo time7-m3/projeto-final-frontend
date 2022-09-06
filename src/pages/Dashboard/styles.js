@@ -148,7 +148,7 @@ export const Main = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    margin: 1px;
     font-size: 20px;
   }
   .mainHeaderSearch {
