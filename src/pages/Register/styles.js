@@ -1,16 +1,21 @@
 import styled from "styled-components";
+
 export const RegContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 504px;
+
   .divImage {
     display: none;
   }
+
   .registerInputs {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    align-items: center;
+    width: 310px;
     gap: 10px;
+
     h1 {
       font-family: "Poppins";
       font-weight: 500;
@@ -18,13 +23,16 @@ export const RegContainer = styled.div`
       text-align: center;
       color: #292929;
     }
+
     form {
       display: flex;
       flex-direction: column;
       align-items: center;
+      width: 310px;
       gap: 8px;
+
       input {
-        width: 310px;
+        width: 94%;
         height: 48px;
         font-family: "Poppins";
         font-weight: 300;
@@ -35,21 +43,25 @@ export const RegContainer = styled.div`
         border-style: none;
         background-color: #f4f4f4;
       }
+
       input[type="number"]::-webkit-inner-spin-button,
       input[type="number"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
       }
+
       span {
         font-family: "Poppins";
         font-weight: 00;
         font-size: 10px;
         text-align: right;
         color: #eb5600;
-        width: 310px;
+        width: 100%;
+        height: 8px;
         margin-top: -6px;
       }
+
       .btnCadastrar {
-        width: 310px;
+        width: 100%;
         height: 48px;
         font-family: "Poppins";
         font-weight: 500;
@@ -59,6 +71,7 @@ export const RegContainer = styled.div`
         border-radius: 18px;
         border-style: none;
         background-color: #1a9988;
+
         :hover {
           cursor: pointer;
         }
