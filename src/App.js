@@ -8,6 +8,8 @@ import { Toaster } from "react-hot-toast";
 import CarContext from "./context/CarContext";
 import RentProvider from "./context/RentContext";
 import DashboardProvider from "./context/DashboardContext";
+import { UserProvider } from "./context/HeaderContext";
+//import UserProvider from "./context/HeaderContext";
 
 function App() {
   return (
@@ -17,9 +19,11 @@ function App() {
           <CarContext>
             <RentProvider>
               <DashboardProvider>
-                <Toaster />
-                <Global />
-                <RoutesMain />
+                <UserProvider>
+                  <Toaster />
+                  <Global />
+                  <RoutesMain />
+                </UserProvider>
               </DashboardProvider>
             </RentProvider>
           </CarContext>

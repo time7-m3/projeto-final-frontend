@@ -10,6 +10,7 @@ import { useState, useEffect, useContext } from "react";
 import { RentContext } from "../../context/RentContext";
 import { CardCar } from "./../../components/CardCarModal";
 import { DashboardContext } from "../../context/DashboardContext";
+import Header from "./../../components/Dashboard/Header";
 
 const Dashboard = () => {
   const { currentCar, isModalOpen } = useContext(RentContext);
@@ -46,7 +47,7 @@ const Dashboard = () => {
   const [carsFiltrados, setCarsFiltrados] = useState([]);
   return (
     <Main>
-      <header>header</header>
+      <Header />
       <div className="mainHeader">
         <div className="mainHeaderLocation">
           <SelectSearch />
