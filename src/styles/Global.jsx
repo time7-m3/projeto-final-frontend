@@ -1,17 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-<<<<<<< HEAD
-export const GlobalStyled = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;600;700;800;900&family=Poppins:wght@400;500;700&display=swap');
-
- * {
-    margin:0;
-    padding: 0;
-    outline:0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-  }
-=======
 export default createGlobalStyle`
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -66,16 +54,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
->>>>>>> d11233413003fab785303559cb2c65333753da21
 
 button{
     cursor: pointer;
   }
-<<<<<<< HEAD
-  
-  ul ol li{
-    list-style: none;
-  }
+
   :root{
     --color0:#ffffff;
     --color1:#292929;
@@ -88,7 +71,4 @@ button{
     --color4_disable:#CF4C00;
     --color3_disable:#515151
 }
-  `;
-=======
 `;
->>>>>>> d11233413003fab785303559cb2c65333753da21
