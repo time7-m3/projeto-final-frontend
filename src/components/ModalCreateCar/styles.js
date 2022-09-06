@@ -43,4 +43,14 @@ export const Container = styled.div`
     text-align: center;
     margin-top: 0.4rem;
   }
+
+  .btn-closed-modal-car {
+    font-size: 25px;
+    border: none;
+    background: transparent;
+    color: rgb(255, 255, 255);
+    position: absolute;
+    margin-left: 371px;
+    margin-top: 8px;
+  }
 `;

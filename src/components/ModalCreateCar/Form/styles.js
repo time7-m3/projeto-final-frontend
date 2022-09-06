@@ -8,7 +8,7 @@ export const ContainerForm = styled.form`
 
   select {
     width: 7.187rem;
-    height: 3rem;
+    height: 2.5rem;
     border-radius: 18px;
     border: none;
     background-color: rgba(244, 244, 244, 1);
@@ -25,20 +25,20 @@ export const ContainerForm = styled.form`
   }
 
   .dates {
-    width: 17.75rem;
-    height: 3rem;
+    width: 22.5rem;
+    height: 2.5rem;
     border-radius: 18px;
     background-color: rgba(244, 244, 244, 1);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 0.437rem;
+    margin-top: 10px;
   }
 
   .input-date {
     border: none;
     background-color: transparent;
-    width: 6.75rem;
+    width: 6.7rem;
     color: rgba(135, 135, 135, 1);
     font-family: "Poppins", sans-serif;
     font-size: 12px;
@@ -57,7 +57,7 @@ export const ContainerForm = styled.form`
     line-height: 16px;
     font-weight: normal;
     margin: 0;
-    margin-right: 2px;
+    margin-right: 4px;
   }
 
   .texto-ate {
@@ -66,23 +66,24 @@ export const ContainerForm = styled.form`
     line-height: 16px;
     font-weight: normal;
     margin: 0;
-    margin-right: 2px;
-    margin-left: 2px;
+    margin-right: 4px;
+    margin-left: 48px;
   }
 
   .div-dates-money {
     display: flex;
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
   .money {
-    width: 69px;
-    height: 3rem;
+    width: 114px;
+    height: 2.5rem;
     background-color: rgba(244, 244, 244, 1);
     border-radius: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 0.375rem;
   }
 
   .input-money {
@@ -98,7 +99,7 @@ export const ContainerForm = styled.form`
     line-height: 16px;
     font-weight: normal;
     margin: 0;
-    margin-right: 3px;
+    margin-right: 9px;
     margin-left: 9px;
   }
 
@@ -108,13 +109,13 @@ export const ContainerForm = styled.form`
   }
 
   .url {
-    height: 3rem;
+    height: 2.5rem;
     background-color: rgba(244, 244, 244, 1);
     border-radius: 18px;
     width: 22.5rem;
     border: none;
     padding-left: 20px;
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
   .url::placeholder {
@@ -123,13 +124,13 @@ export const ContainerForm = styled.form`
   }
 
   textarea {
-    height: 9.125rem;
+    height: 8.125rem;
     width: 22.5rem;
     border: none;
     background-color: rgba(244, 244, 244, 1);
     border-radius: 18px;
     resize: none;
-    margin-top: 12px;
+    margin-top: 10px;
     padding: 10px 20px 10px 20px;
   }
 
@@ -148,10 +149,29 @@ export const ContainerForm = styled.form`
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 18px;
-    margin-top: 12px;
+    margin-top: 10px;
   }
 
   .button-form:hover {
     background-color: rgba(31, 125, 113, 1);
+  }
+
+  .money-local {
+    display: flex;
+    margin-top: 10px;
+  }
+
+  .local {
+    height: 2.5rem;
+    background-color: rgba(244, 244, 244, 1);
+    border-radius: 18px;
+    border: none;
+    padding-left: 20px;
+    width: 242px;
+  }
+
+  .local::placeholder {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
   }
 `;

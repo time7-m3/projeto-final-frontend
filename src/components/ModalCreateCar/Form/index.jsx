@@ -1,16 +1,30 @@
 import { ContainerForm } from "./styles";
 import down from "../../../assets/down.png";
 import { useForm } from "react-hook-form";
+import { useContext, useState } from "react";
+import { marcas, modelos } from "../../../services/dadosCarros";
+import { AuthCarContext } from "../../../context/CarContext";
 
 const Form = () => {
   const { register, handleSubmit } = useForm();
+  const { userInput, setUserInput, userInput2, setUserInput2, createCar } =
+    useContext(AuthCarContext);
 
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+  const [userMarca, setUserMarca] = useState("");
+
+  const filtrarModelos = modelos.filter((elem) => {
+    return elem.marca === userMarca;
+  });
+
+  const mapear = filtrarModelos.map((elem) => {
+    return elem.modelo;
+  });
+
+  let years = new Date().getFullYear();
+  years = Array.from(new Array(20), (val, index) => (index - years) * -1);
 
   return (
-    <ContainerForm onSubmit={handleSubmit(onSubmit)}>
+    <ContainerForm onSubmit={handleSubmit(createCar)}>
       <div className="selects">
         <select
           name="marca"
@@ -21,11 +35,14 @@ const Form = () => {
             backgroundRepeat: "no-repeat",
           }}
           {...register("marca")}
+          onChange={(event) => setUserMarca(event.target.value)}
         >
-          <option>Marca</option>
-          <option value="Fiat">Fiat</option>
-          <option value="Renault">Renault</option>
-          <option value="Audi">Audi</option>
+          <option value="">Marca</option>
+          {marcas.map((elem, index) => (
+            <option key={index} value={elem}>
+              {elem}
+            </option>
+          ))}
         </select>
         <select
           name="modelo"
@@ -37,10 +54,12 @@ const Form = () => {
           }}
           {...register("modelo")}
         >
-          <option>Modelo</option>
-          <option value="Toro">Toro</option>
-          <option value="Kwid">Kwid</option>
-          <option value="A3">A3</option>
+          <option value="">Modelo</option>
+          {mapear.map((elem, index) => (
+            <option key={index} value={elem}>
+              {elem}
+            </option>
+          ))}
         </select>
         <select
           name="ano"
@@ -52,45 +71,61 @@ const Form = () => {
           }}
           {...register("ano")}
         >
-          <option>Ano</option>
-          <option value="2018">2018</option>
-          <option value="2019">2019</option>
-          <option value="2020">2020</option>
+          <option value="">Ano</option>
+          {years.map((elem, index) => (
+            <option key={index} value={elem}>
+              {elem}
+            </option>
+          ))}
         </select>
       </div>
-      <div className="div-dates-money">
-        <div className="dates">
-          <p className="texto-de">De:</p>
-          <input
-            className="input-date"
-            type="date"
-            name=""
-            id=""
-            {...register("data1")}
-          />
-          <p className="texto-ate">Até:</p>
-          <input
-            className="input-date"
-            type="date"
-            name=""
-            id=""
-            {...register("data2")}
-          />
-        </div>
+      <div className="dates">
+        <p className="texto-de">De:</p>
+        <input
+          className="input-date"
+          type="date"
+          name=""
+          id=""
+          required
+          value={userInput}
+          onChange={(event) => setUserInput(event.target.value)}
+        />
+        <p className="texto-ate">Até:</p>
+        <input
+          className="input-date"
+          type="date"
+          name=""
+          id=""
+          required
+          value={userInput2}
+          onChange={(event) => setUserInput2(event.target.value)}
+        />
+      </div>
+      <div className="money-local">
         <div className="money">
           <p className="texto-money">R$</p>
           <input
             className="input-money"
             type="number"
             placeholder="00.00"
+            required
             {...register("valor")}
           />
         </div>
+        <input
+          type="text"
+          className="local"
+          placeholder="Digite a Cidade"
+          {...register("localizacao")}
+          required
+        />
       </div>
+
       <input
         type="text"
         className="url"
         placeholder="Cole aqui a url da imagem"
+        required
         {...register("imagem")}
       />
       <textarea
@@ -99,6 +134,7 @@ const Form = () => {
         cols="30"
         rows="10"
         placeholder="Digite uma descrição..."
+        required
         {...register("descricao")}
       ></textarea>
       <button className="button-form" type="submit">
