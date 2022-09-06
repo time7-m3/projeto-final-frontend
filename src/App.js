@@ -5,6 +5,7 @@ import RegisterProvider from "./context/RegisterContext";
 import "./App.css";
 import LoginContext from "./context/AuthContext";
 import { Toaster } from "react-hot-toast";
+import CarContext from "./context/CarContext";
 import RentProvider from "./context/RentContext";
 
 function App() {
@@ -12,11 +13,13 @@ function App() {
     <div className="App">
       <LoginContext>
         <RegisterProvider>
-          <RentProvider>
-            <Toaster />
-            <Global />
-            <RoutesMain />
-          </RentProvider>
+          <CarContext>
+            <RentProvider>
+              <Toaster />
+              <Global />
+              <RoutesMain />
+            </RentProvider>
+          </CarContext>
         </RegisterProvider>
       </LoginContext>
     </div>
