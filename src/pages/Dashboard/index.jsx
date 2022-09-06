@@ -9,11 +9,12 @@ import api from "./../../services/api";
 import { useState, useEffect, useContext } from "react";
 import { RentContext } from "../../context/RentContext";
 import { CardCar } from "./../../components/CardCarModal";
+import { DashboardContext } from "../../context/DashboardContext";
 
 const Dashboard = () => {
+  const { currentCar, isModalOpen } = useContext(RentContext);
   const [carros, setCarros] = useState([]);
-  const { currentCar, setCurrentCar, isModalOpen, setIsModalOpen } =
-    useContext(RentContext);
+  const { currentCity } = useContext(DashboardContext);
   async function getCarros() {
     await api.get("/cars", {}).then(({ data }) => {
       // console.log("carrros", data);
@@ -23,7 +24,9 @@ const Dashboard = () => {
   useEffect(() => {
     getCarros();
   }, []);
-  //console.log("asfdfa", carros);
+
+  const [carsFiltrados, setCarsFiltrados] = useState([]);
+
   return (
     <Main>
       <header>header</header>
@@ -34,27 +37,52 @@ const Dashboard = () => {
         <div className="mainHeaderFilters">
           <Filters />
         </div>
-        <div className="mainHeaderDates">
-          <div className="mainHeaderDatesIcon">
-            <BiCalendar />
+        <div className="mainHeaderDateSearch">
+          <div className="mainHeaderDates">
+            <div className="mainHeaderDatesIcon">
+              <BiCalendar />
+            </div>
+            <span>De:</span>
+            <DatePicker />
+            <span>Até:</span>
+            <DatePicker />
           </div>
-          <span>De:</span>
-          <DatePicker />
-          <span>Até:</span>
-          <DatePicker />
-        </div>
-        <div className="mainHeaderSearch">
-          <FiSearch />
+
+          <div
+            className="mainHeaderSearch"
+            onClick={() => {
+              setCarsFiltrados(
+                carros.filter((elem) => {
+                  //testes//
+
+                  if (currentCity === "") {
+                    return "";
+                  } else {
+                    // console.log(elem.localizacao === currentCity);
+                    if (elem.localizacao === currentCity) {
+                      return elem;
+                    }
+                  }
+                  return "";
+                })
+              );
+            }}
+          >
+            <FiSearch />
+          </div>
         </div>
       </div>
       <main>
         {isModalOpen && <CardCar car={currentCar} />}
         <ul>
-          {carros.map((item) => (
-            <Car car={item} />
-          ))}
+          {carsFiltrados.length > 0
+            ? carsFiltrados.map((item) => <Car car={item} key={item.id} />)
+            : carros.map((item) => <Car car={item} key={item.id} />)}
         </ul>
       </main>
+      <div className="loadMore" onClick={() => alert("carregar mais")}>
+        Carregar mais...
+      </div>
     </Main>
   );
 };

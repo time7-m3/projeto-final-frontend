@@ -1,6 +1,6 @@
 import { Card } from "./styles";
 import { BiCalendar } from "react-icons/bi";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { RentContext } from "../../../context/RentContext";
 export const Car = ({ car }) => {
   const { setIsModalOpen, setCurrentCar } = useContext(RentContext);
@@ -17,7 +17,6 @@ export const Car = ({ car }) => {
           <div
             className="cardDate"
             onClick={() => {
-              console.log("dfasdfsdffS");
               setCurrentCar(car);
               setIsModalOpen(true);
             }}

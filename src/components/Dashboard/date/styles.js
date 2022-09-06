@@ -22,6 +22,9 @@ export const StyledDatePickerWrapper = styled.div`
         cursor: pointer;
       }
     }
+    .DayPicker_weekHeader_ul .DayPicker_weekHeader_ul_1 {
+      font-size: 10px;
+    }
 
     .SingleDatePickerInput__withBorder {
       border: none;
@@ -30,6 +33,7 @@ export const StyledDatePickerWrapper = styled.div`
       overflow: hidden;
       padding: 0;
       margin: 0;
+      font-size: 10px;
 
       :hover,
       .DateInput_input__focused {
