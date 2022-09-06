@@ -1,22 +1,24 @@
-import { CarDiv } from "./styles";
+import { CarDiv, ModalBackground } from "./styles";
 import { RentContext } from "../../context/RentContext";
 import { useContext, useEffect, useRef } from "react";
+import btnClose from "../../assets/btnClose.svg";
+import bx_calendar_check from "../../assets/bx_calendar_check.svg";
 
 export const CardCar = ({ car }) => {
-  const { setIsModalOpen, isModalOpen } = useContext(RentContext);
+  const { setIsModalOpen, setIsPayModal } = useContext(RentContext);
   const modalRef = useRef();
 
   useEffect(() => {
     const handleClick = (e) => {
       if (!modalRef.current.contains(e.target)) {
-        // setIsModalOpen(false);
+        setIsModalOpen(false);
       }
     };
 
-    document.addEventListener("click", handleClick);
+    document.addEventListener("mousedown", handleClick);
 
     return () => {
-      document.removeEventListener("click", handleClick);
+      document.removeEventListener("mousedown", handleClick);
     };
   }, [setIsModalOpen]);
 
@@ -27,9 +29,11 @@ export const CardCar = ({ car }) => {
 
   return (
     <>
-      {/* BOTÃO DE FECHAR MODAL */}
-
+      <ModalBackground />
       <CarDiv ref={modalRef}>
+        <button className="btnCloseModal" onClick={() => closeModal()}>
+          <img src={btnClose} alt="close" />
+        </button>
         <div className="carImageBox">
           <img src={car.imagem} alt={car.marca} className="carImage" />
         </div>
@@ -41,10 +45,10 @@ export const CardCar = ({ car }) => {
         <div className="carDetails">
           <div className="carOwner">
             <div className="Right">
-              <p>Proprietário:</p> <span>{car.userId}</span>
+              <p>Proprietário:</p> <span>{car.proprietario}</span>
             </div>
             <div className="Left">
-              <p>Valor:</p> <span>R${car.valor},00</span>
+              <p>Valor: </p> <span>R${car.valor},00</span>
             </div>
           </div>
         </div>
@@ -58,7 +62,16 @@ export const CardCar = ({ car }) => {
           <p>Descrição:</p>
           <span>{car.descricao}</span>
         </div>
-        <button>Alugar</button>
+        <button
+          className="btnRentCar"
+          onClick={() => {
+            setIsPayModal(true);
+            closeModal();
+          }}
+        >
+          <img src={bx_calendar_check} alt="calendar" />
+          Alugar
+        </button>
       </CarDiv>
     </>
   );

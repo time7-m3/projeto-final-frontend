@@ -9,12 +9,20 @@ import api from "./../../services/api";
 import { useState, useEffect, useContext } from "react";
 import { RentContext } from "../../context/RentContext";
 import { CardCar } from "./../../components/CardCarModal";
+import { PaymentModal } from "../../components/PaymentModal";
 import { DashboardContext } from "../../context/DashboardContext";
 import Header from "./../../components/Dashboard/Header";
 
 const Dashboard = () => {
-  const { currentCar, isModalOpen } = useContext(RentContext);
   const [carros, setCarros] = useState([]);
+  const {
+    currentCar,
+    setCurrentCar,
+    isModalOpen,
+    setIsModalOpen,
+    isPayModal,
+    setIsPayModal,
+  } = useContext(RentContext);
   const {
     currentMarcaCar,
     setMarcaCurrentCar,
@@ -87,6 +95,7 @@ const Dashboard = () => {
       </div>
       <main>
         {isModalOpen && <CardCar car={currentCar} />}
+        {isPayModal && <PaymentModal />}
         <ul>
           {carsFiltrados.length > 0
             ? carsFiltrados.map((item) => <Car car={item} key={item.id} />)
