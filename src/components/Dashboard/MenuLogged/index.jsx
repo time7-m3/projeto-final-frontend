@@ -4,16 +4,18 @@ import User from "../../../assets/user.jpeg";
 import { useUser } from "../../../context/HeaderContext";
 import { useContext } from "react";
 import { AuthCarContext } from "../../../context/CarContext";
+import { AuthContext } from "../../../context/AuthContext";
 
 const MenuLoged = () => {
-  const { logOut, registerCar, editProfile } = useUser();
+  const { logOut, editProfile } = useUser();
 
   const { openModalCreateCar } = useContext(AuthCarContext);
+  const { setUser } = useContext(AuthContext);
 
   return (
     <MenuStyled>
       <div className="divContainer">
-        <button onClick={() => logOut()}>
+        <button onClick={() => setUser(null)}>
           <BiLogOut size={30} />
           <p>Sair</p>
         </button>
