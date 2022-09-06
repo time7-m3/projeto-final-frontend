@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Date } from "./styles";
-import "react-dates/lib/css/_datepicker.css";
+// import "react-dates/lib/css/_datepicker.css";
+// Resolver(HASSAN)
 import { DashboardContext } from "../../../context/DashboardContext";
 
 const DateSelect = () => {
