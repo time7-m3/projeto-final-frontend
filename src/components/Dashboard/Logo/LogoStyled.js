@@ -4,20 +4,21 @@ export const LogoStyled = styled.div`
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */  
-  padding: 20px;
-  max-width: 1440px;
+  /* margin-top: 20px; */
+  
+  /* margin: auto; */
+  h1{
+    font-size: 30px;
+    color:var(--color4); 
+    font-weight:bold ;
+  }
+  span{
+    color: var(--color1);    
+  }
   @media (min-width: 769px) {
-      /* background-color: #ac5880; */
+      /* background-color: #ac5880;
       margin: auto;
       display: flex;
-      flex-direction: row;
-
+      flex-direction: row; */
     }
-    h1{
-      font-size: 30px;
-      color:#EB5600; 
-    }
-  span{
-    color: #292929;    
-  }
   `
