@@ -6,6 +6,10 @@ export default createGlobalStyle`
    License: none (public domain)
 */
 
+*{
+	box-sizing: border-box;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,6 +29,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -53,4 +58,17 @@ table {
 button{
     cursor: pointer;
   }
+
+  :root{
+    --color0:#ffffff;
+    --color1:#292929;
+    --color2:#878787;
+    --color3:#727272;
+    --color4:#eb5600;
+    --color5:#1a9988;
+
+    --color5_disable:#1f7d71;
+    --color4_disable:#CF4C00;
+    --color3_disable:#515151
+}
 `;

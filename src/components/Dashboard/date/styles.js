@@ -1,50 +1,49 @@
 import styled from "styled-components";
-export const StyledDatePickerWrapper = styled.div`
-  & .SingleDatePicker,
-  .SingleDatePickerInput {
-    .DateInput {
-      width: 80%;
-      height: 35px;
-      display: flex;
+export const Date = styled.div`
+  .dates {
+    display: flex;
+    margin-left: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 18px;
+    background-color: rgba(244, 244, 244, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-      .DateInput_input {
-        color: #878787;
-        display: flex;
-        align-items: center;
-        border: none;
-        justify-content: center;
-        font-size: 14px;
-        line-height: 16px;
-        border-bottom: 2px;
-        padding: 0;
-        padding-top: 5px;
-        background-color: #f4f4f4;
-        cursor: pointer;
-      }
-    }
+  .input-date {
+    margin: 0;
+    border: none;
+    background-color: transparent;
+    width: 80px;
+    color: rgba(135, 135, 135, 1);
+    font-family: "Poppins", sans-serif;
+    font-size: 10px;
+  }
+  /* input::-webkit-calendar-picker-indicator {
+    display: none;
+  } */
 
-    .SingleDatePickerInput__withBorder {
-      border: none;
-      border-radius: 20px;
-      background-color: #f4f4f4;
-      overflow: hidden;
-      padding: 0;
-      margin: 0;
+  .input-date::placeholder {
+    font-size: 12x;
+  }
 
-      :hover,
-      .DateInput_input__focused {
-        border: 0 solid;
-      }
+  .texto-de {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: normal;
+    margin: 0;
+  }
 
-      .CalendarDay__selected {
-        background: blue;
-        border: blueviolet;
-      }
-    }
-
-    .SingleDatePicker_picker.SingleDatePicker_picker {
-      top: 43px;
-      left: 2px;
-    }
+  .texto-ate {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: normal;
+    margin: 0;
   }
 `;

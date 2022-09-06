@@ -10,6 +10,8 @@ import { useState, useEffect, useContext } from "react";
 import { RentContext } from "../../context/RentContext";
 import { CardCar } from "./../../components/CardCarModal";
 import { PaymentModal } from "../../components/PaymentModal";
+import { DashboardContext } from "../../context/DashboardContext";
+import Header from "./../../components/Dashboard/Header";
 
 const Dashboard = () => {
   const [carros, setCarros] = useState([]);
@@ -21,19 +23,39 @@ const Dashboard = () => {
     isPayModal,
     setIsPayModal,
   } = useContext(RentContext);
+  const {
+    currentMarcaCar,
+    setMarcaCurrentCar,
+    currentModeloCar,
+    setModeloCurrentCar,
+    currentAnoCar,
+    setAnoCurrentCar,
+    currentCity,
+    setCity,
+    currentDateFrom,
+    setCurrentDateFrom,
+    currentDateTo,
+    setCurrentDateTo,
+  } = useContext(DashboardContext);
+
   async function getCarros() {
     await api.get("/cars", {}).then(({ data }) => {
-      // console.log("carrros", data);
-      setCarros(data);
+      setCarros(
+        data.filter((item) => {
+          if (item.alugado === false) {
+            return item;
+          }
+        })
+      );
     });
   }
   useEffect(() => {
     getCarros();
   }, []);
-  //console.log("asfdfa", carros);
+  const [carsFiltrados, setCarsFiltrados] = useState([]);
   return (
     <Main>
-      <header>header</header>
+      <Header />
       <div className="mainHeader">
         <div className="mainHeaderLocation">
           <SelectSearch />
@@ -41,28 +63,48 @@ const Dashboard = () => {
         <div className="mainHeaderFilters">
           <Filters />
         </div>
-        <div className="mainHeaderDates">
-          <div className="mainHeaderDatesIcon">
-            <BiCalendar />
+        <div className="mainHeaderDateSearch">
+          <div className="mainHeaderDates">
+            <div className="mainHeaderDatesIcon">
+              <BiCalendar />
+            </div>
+            <DatePicker />
           </div>
-          <span>De:</span>
-          <DatePicker />
-          <span>Até:</span>
-          <DatePicker />
-        </div>
-        <div className="mainHeaderSearch">
-          <FiSearch />
+          <div
+            className="mainHeaderSearch"
+            onClick={() => {
+              setCarsFiltrados(
+                carros.filter((elem) => {
+                  //testes/
+                  if (currentCity === "") {
+                    return "";
+                  } else {
+                    if (elem.localizacao === currentCity) {
+                      return elem;
+                    }
+                  }
+                  return "";
+                })
+              );
+              //setCity("");
+            }}
+          >
+            <FiSearch />
+          </div>
         </div>
       </div>
       <main>
         {isModalOpen && <CardCar car={currentCar} />}
         {isPayModal && <PaymentModal />}
         <ul>
-          {carros.map((item) => (
-            <Car car={item} />
-          ))}
+          {carsFiltrados.length > 0
+            ? carsFiltrados.map((item) => <Car car={item} key={item.id} />)
+            : carros.map((item) => <Car car={item} key={item.id} />)}
         </ul>
       </main>
+      <div className="loadMore" onClick={() => alert("carregar mais")}>
+        Carregar mais...
+      </div>
     </Main>
   );
 };
