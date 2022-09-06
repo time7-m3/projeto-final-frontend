@@ -5,15 +5,18 @@ import RegisterProvider from "./context/RegisterContext";
 import "./App.css";
 import LoginContext from "./context/AuthContext";
 import { Toaster } from "react-hot-toast";
+import CarContext from "./context/CarContext";
 
 function App() {
   return (
     <div className="App">
       <LoginContext>
         <RegisterProvider>
-          <Toaster />
-          <Global />
-          <RoutesMain />
+          <CarContext>
+            <Toaster />
+            <Global />
+            <RoutesMain />
+          </CarContext>
         </RegisterProvider>
       </LoginContext>
     </div>
