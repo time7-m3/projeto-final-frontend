@@ -29,7 +29,7 @@ export const Select = styled.div`
       }
     }
     @media screen and (min-width: 769px) {
-      max-width: 115.45px;
+      max-width: 110px;
       height: 48px;
       display: flex;
       margin-left: 10px;

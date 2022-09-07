@@ -2,9 +2,9 @@ import { Select } from "./styles";
 export default function SelectComp(props) {
   return (
     <Select>
-    
-      <select className="selectMain"
-        key={props.obj.code}
+      <select
+        className="selectMain"
+        key={props.obj.id}
         onChange={(e) => props.setObj(e.target.value)}
       >
         <option value="{name}" selected disabled>

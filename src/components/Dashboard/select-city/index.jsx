@@ -1,18 +1,34 @@
-import { useEffect, useState } from "react";
-import api from "../../../services/api-city";
+import { useContext, useEffect, useState } from "react";
+import api from "../../../services/api";
 import { GrLocation } from "react-icons/gr";
 import { SearchCity } from "./styles";
 import Select from "react-select";
+import { DashboardContext } from "../../../context/DashboardContext";
 
 const SelectSearch = () => {
+  const {
+    currentMarcaCar,
+    setMarcaCurrentCar,
+    currentModeloCar,
+    setModeloCurrentCar,
+    currentAnoCar,
+    setAnoCurrentCar,
+    currentCity,
+    setCity,
+    currentDateFrom,
+    setCurrentDateFrom,
+    currentDateTo,
+    setCurrentDateTo,
+  } = useContext(DashboardContext);
   const [cidade, setCidade] = useState([]);
   async function pegarCidades() {
-    await api.get("/", {}).then(({ data }) => {
+    await api.get("/cars", {}).then(({ data }) => {
+      //  console.log(data);
       setCidade(
         data.map((item) => {
           return {
-            id: item.id,
-            label: item.nome,
+            id: item.userId,
+            label: item.localizacao,
           };
         })
       );
@@ -42,14 +58,17 @@ const SelectSearch = () => {
       </div>
       <div className="select">
         <Select
+          defaultInputValue={currentCity}
           options={cidade}
           components={{
             DropdownIndicator: () => null,
             IndicatorSeparator: () => null,
           }}
           styles={styles}
-          name="Onde gostaria de alugar?"
           placeholder="Onde gostaria de alugar?"
+          onChange={(e) => {
+            setCity(e.label);
+          }}
           noOptionsMessage={() => "Sem Opções!"}
           theme={(theme) => ({
             ...theme,
@@ -58,7 +77,7 @@ const SelectSearch = () => {
             colors: {
               ...theme.colors,
               primary25: "#F4F4F4",
-              primary: "black",
+              primary: "#9e9e9e",
             },
           })}
         />

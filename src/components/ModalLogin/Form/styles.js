@@ -7,7 +7,7 @@ export const FormContainer = styled.form`
   margin-top: -1.4rem;
 
   input {
-    width: 17.25rem;
+    width: 20.25rem;
     height: 3rem;
     border-radius: 18px;
     padding-left: 40px;
@@ -74,4 +74,21 @@ export const FormContainer = styled.form`
           }
         `
       : css``}
+
+  @media (max-width: 371px) {
+    input {
+      width: 16.25rem;
+    }
+    .btn-form {
+      width: 16.25rem;
+    }
+
+    .email {
+      left: -107px;
+    }
+
+    .password {
+      left: -107px;
+    }
+  }
 `;

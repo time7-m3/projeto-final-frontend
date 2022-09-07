@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const Main = styled.div`
+  font-family: "Poppins";
+  max-width: 1400px;
+  width: 90%;
   @media screen and (max-width: 425px) {
     max-width: 360px;
     max-height: 640px;
@@ -17,8 +20,11 @@ export const Main = styled.div`
   @media screen and (min-width: 769px) {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .mainHeader {
+    margin-top: 10px;
     @media screen and (max-width: 425px) {
       margin-top: 9px;
       margin: 0 auto;
@@ -35,47 +41,55 @@ export const Main = styled.div`
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
     @media screen and (min-width: 426px) and (max-width: 768px) {
-      margin-top: 9px;
-      margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
+      flex-direction: column;
       justify-content: space-evenly;
       padding: 0px 20px;
-      padding: 10px;
       width: 90%;
-      height: 177px;
-      margin: 0 auto;
-      border-radius: 20px;
+      height: 100%;
+      max-height: 300px;
+      padding: 10px;
+      align-items: center;
+      justify-items: center;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      margin: 10px auto;
+      border-radius: 20px;
+      flex-wrap: nowrap;
+      gap: 10px;
     }
     @media screen and (min-width: 769px) {
       display: flex;
       flex-direction: row;
-      justify-content: space-evenly;
+      justify-content: space-around;
       padding: 0px 20px;
-      width: 90%;
-      max-height: 100px;
+      max-width: 1400px;
+
+      max-height: 300px;
       padding: 10px;
       align-items: center;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      margin: 0 auto;
       border-radius: 20px;
+      gap: 10px;
       flex-wrap: wrap;
     }
   }
   .mainHeaderLocation {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 60%;
+    height: 50px;
+    margin: 0;
     @media screen and (max-width: 425px) {
       width: 320.6px;
       height: 50px;
     }
     @media screen and (min-width: 426px) and( max-width: 768px) {
-      display: flex;
-      flex-direction: row;
     }
     @media screen and (min-width: 769px) {
       width: 403.04px;
       height: 50px;
+      margin: 0;
     }
   }
 
@@ -92,7 +106,24 @@ export const Main = styled.div`
       flex-direction: row;
     }
   }
+  .mainHeaderDateSearch {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 300px;
+    gap: 5px;
+  }
   .mainHeaderDates {
+    margin-left: 10px;
+    display: flex;
+    width: 280px;
+    height: 48px;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #f4f4f4;
+    border-radius: 20px;
+    max-width: 90%;
     @media screen and (max-width: 425px) {
       display: flex;
       align-items: center;
@@ -110,22 +141,31 @@ export const Main = styled.div`
     @media screen and (min-width: 769px) {
       margin-left: 10px;
       display: flex;
-      width: 280px;
+      width: 90%;
       height: 48px;
       align-items: center;
       background-color: #f4f4f4;
       border-radius: 20px;
-      max-width: 30%;
+      max-width: 400px;
     }
   }
   .mainHeaderDatesIcon {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    margin: 1px;
     font-size: 20px;
   }
   .mainHeaderSearch {
+    display: flex;
+    font-size: 20px;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    width: 40px;
+    height: 40px;
+    background-color: #eb5600;
     @media screen and (max-width: 425px) {
       display: flex;
       font-size: 20px;
@@ -149,6 +189,7 @@ export const Main = styled.div`
       width: 40px;
       height: 40px;
       background-color: #eb5600;
+      cursor: pointer;
     }
   }
   ul {
@@ -162,16 +203,65 @@ export const Main = styled.div`
       list-style: none;
     }
     @media screen and (min-width: 426px) and( max-width: 768px) {
+      display: flex;
+      flex-direction: row;
+      gap: 5px;
     }
     @media screen and (min-width: 769px) {
       display: flex;
       flex-wrap: wrap;
-      width: 90%;
-      margin: 0 auto;
-      margin: 0 auto;
+      width: 100%;
+      justify-content: center;
       overflow: unset;
       list-style: none;
-      gap: 20px;
+      gap: 10px;
+    }
+  }
+  .loadMore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    background-color: #1a9988;
+    color: white;
+    border-radius: 20px;
+    position: fixed;
+    margin: 0 auto;
+    width: 196px;
+    height: 48px;
+    left: auto;
+    top: 75%;
+    @media screen and (min-width: 426px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      background-color: #1a9988;
+      color: white;
+      border-radius: 20px;
+      position: fixed;
+      width: 196px;
+      height: 48px;
+      left: 30%;
+      top: 90%;
+    }
+    @media screen and (min-width: 769px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      background-color: #1a9988;
+      color: white;
+      border-radius: 20px;
+      position: fixed;
+      position: fixed;
+      width: 196px;
+      height: 48px;
+      left: auto;
+      top: 90%;
     }
   }
 `;
