@@ -23,7 +23,6 @@ export const CardCar = ({ car }) => {
   }, [setIsModalOpen]);
 
   const closeModal = () => {
-    console.log("erro");
     setIsModalOpen(false);
   };
 

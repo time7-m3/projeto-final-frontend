@@ -30,8 +30,9 @@ export const PaymentModal = () => {
     setIsModalOpen(true);
   };
 
-  const doPay = () => {
-    setIsPayModal(false);
+  const doPay = (id) => {
+    console.log(id);
+    // setIsPayModal(false);
   };
 
   return (
@@ -51,7 +52,7 @@ export const PaymentModal = () => {
         <div className="pixImageBox">
           <img src={group} alt="pix"></img>
         </div>
-        <button className="btnPayment" onClick={() => doPay()}>
+        <button className="btnPayment" onClick={() => doPay(currentCar.id)}>
           <img src={coin} alt="pagamento"></img>Pagamento efetuado
         </button>
       </PayDiv>
