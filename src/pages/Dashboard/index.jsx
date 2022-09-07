@@ -136,7 +136,7 @@ const Dashboard = () => {
       </div>
       <main>
         {isModalOpen && <CardCar car={currentCar} />}
-        {isPayModal && <PaymentModal />}
+        {isPayModal && <PaymentModal car={currentCar} />}
         {isModalCar && <ModalCreateCar />}
         {isModalLogin && <ModalLogin />}
         <ul>
