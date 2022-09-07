@@ -74,4 +74,21 @@ export const FormContainer = styled.form`
           }
         `
       : css``}
+
+  @media (max-width: 371px) {
+    input {
+      width: 16.25rem;
+    }
+    .btn-form {
+      width: 16.25rem;
+    }
+
+    .email {
+      left: -107px;
+    }
+
+    .password {
+      left: -107px;
+    }
+  }
 `;

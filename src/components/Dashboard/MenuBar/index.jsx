@@ -1,21 +1,13 @@
+import { MenuDiv } from "./styles";
+import MenuLoged from "../MenuLogged";
+import MenuUnLoged from "../MenuUnLogged";
+import { AuthContext } from "../../../context/AuthContext";
+import { useContext } from "react";
 
+const MenuBar = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  return <MenuDiv>{user ? <MenuLoged /> : <MenuUnLoged />}</MenuDiv>;
+};
 
-
-import { MenuDiv } from "./styles"
-import { useUser } from "../../../context/HeaderContext"
-import MenuLoged from "../MenuLogged"
-import MenuUnLoged from "../MenuUnLogged"
-
-const MenuBar=()=>{
-  
-    const { user,} = useUser(); 
-    
-    return(
-        <MenuDiv>
-            {user?<MenuLoged/>
-            :<MenuUnLoged/>}                    
-        </MenuDiv>
-    )
-}
-
-export default MenuBar
+export default MenuBar;

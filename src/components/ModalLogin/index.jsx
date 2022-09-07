@@ -4,8 +4,15 @@ import Form from "./Form";
 import { RiCloseCircleLine } from "react-icons/ri";
 import { useContext, useEffect, useRef } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const ModalLogin = () => {
+  const navigate = useNavigate();
+
+  const register = () => {
+    navigate("/register", { replace: true });
+  };
+
   const { setIsModalLogin } = useContext(AuthContext);
 
   const modalRef = useRef();
@@ -38,7 +45,9 @@ const ModalLogin = () => {
           <p>Login</p>
           <Form />
           <span>Não tem cadastro?</span>
-          <button className="btn-cadastrar">Cadastre-se</button>
+          <button className="btn-cadastrar" onClick={register}>
+            Cadastre-se
+          </button>
         </div>
         <div className="card-image">
           <img src={image} alt="" />

@@ -53,4 +53,47 @@ export const Container = styled.div`
     margin-left: 371px;
     margin-top: 8px;
   }
+
+  @media (max-width: 450px) {
+    img {
+      width: 20.312rem;
+    }
+
+    .div-image {
+      width: 20.312rem;
+    }
+
+    .div-form {
+      width: 20.312rem;
+      height: 25.3rem;
+    }
+
+    .btn-closed-modal-car {
+      margin-left: 283px;
+    }
+  }
+
+  @media (max-width: 346px) {
+    img {
+      width: 18.312rem;
+      height: 9.75rem;
+    }
+
+    .div-image {
+      width: 18.312rem;
+      height: 9.75rem;
+    }
+
+    .div-form {
+      width: 18.312rem;
+    }
+
+    .btn-closed-modal-car {
+      margin-left: 255px;
+    }
+
+    p {
+      font-size: 22px;
+    }
+  }
 `;
