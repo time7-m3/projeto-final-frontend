@@ -29,7 +29,7 @@ export const CarDiv = styled.div`
   opacity: 100%;
 
   .carImageBox {
-    width: 90vw;
+    width: 90%;
     margin: auto;
     .carImage {
       margin-top: 15px;
