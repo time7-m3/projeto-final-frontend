@@ -9,7 +9,7 @@ export const CardCar = ({ car }) => {
   const { setIsModalOpen, setIsPayModal } = useContext(RentContext);
   const { user } = useContext(AuthContext);
   const modalRef = useRef();
-  console.log(car);
+
   useEffect(() => {
     const handleClick = (e) => {
       if (!modalRef.current.contains(e.target)) {

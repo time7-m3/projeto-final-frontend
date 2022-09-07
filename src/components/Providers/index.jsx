@@ -10,13 +10,13 @@ const Providers = ({ children }) => {
     <>
       <LoginContext>
         <RegisterProvider>
-          <CarContext>
-            <RentProvider>
+          <RentProvider>
+            <CarContext>
               <DashboardProvider>
                 <UserProvider>{children}</UserProvider>
               </DashboardProvider>
-            </RentProvider>
-          </CarContext>
+            </CarContext>
+          </RentProvider>
         </RegisterProvider>
       </LoginContext>
     </>
