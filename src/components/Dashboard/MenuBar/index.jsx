@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 const MenuBar = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
+
   return <MenuDiv>{user ? <MenuLoged /> : <MenuUnLoged />}</MenuDiv>;
 };
 
