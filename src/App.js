@@ -9,6 +9,7 @@ import CarContext from "./context/CarContext";
 import RentProvider from "./context/RentContext";
 import DashboardProvider from "./context/DashboardContext";
 import { UserProvider } from "./context/HeaderContext";
+import "./App.css"
 //import UserProvider from "./context/HeaderContext";
 
 function App() {
