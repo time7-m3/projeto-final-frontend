@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Main = styled.div`
   font-family: "Poppins";
+  max-width: 1400px;
+  width: 90%;
   @media screen and (max-width: 425px) {
     max-width: 360px;
     max-height: 640px;
@@ -22,6 +24,7 @@ export const Main = styled.div`
     justify-content: center;
   }
   .mainHeader {
+    margin-top: 10px;
     @media screen and (max-width: 425px) {
       margin-top: 9px;
       margin: 0 auto;
@@ -59,7 +62,8 @@ export const Main = styled.div`
       flex-direction: row;
       justify-content: space-around;
       padding: 0px 20px;
-      width: 90%;
+      max-width: 1400px;
+
       max-height: 300px;
       padding: 10px;
       align-items: center;
@@ -75,6 +79,7 @@ export const Main = styled.div`
     justify-content: center;
     width: 60%;
     height: 50px;
+    margin: 0;
     @media screen and (max-width: 425px) {
       width: 320.6px;
       height: 50px;
@@ -213,7 +218,34 @@ export const Main = styled.div`
     }
   }
   .loadMore {
-    @media screen and (min-width: 426px) and( max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    background-color: #1a9988;
+    color: white;
+    border-radius: 20px;
+    position: fixed;
+    margin: 0 auto;
+    width: 196px;
+    height: 48px;
+    left: auto;
+    top: 75%;
+    @media screen and (min-width: 426px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      background-color: #1a9988;
+      color: white;
+      border-radius: 20px;
+      position: fixed;
+      width: 196px;
+      height: 48px;
+      left: 30%;
+      top: 90%;
     }
     @media screen and (min-width: 769px) {
       display: flex;

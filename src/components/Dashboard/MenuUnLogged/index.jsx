@@ -1,22 +1,21 @@
-import { BiLogIn } from "react-icons/bi"
-import { useUser } from "../../../context/HeaderContext"
-import { MenuStyled } from "../MenuLogged/styles"
+import { BiLogIn } from "react-icons/bi";
+import { MenuStyled } from "../MenuLogged/styles";
+import { useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext";
 
+const MenuUnLoged = () => {
+  const { openModalLogin } = useContext(AuthContext);
 
-const MenuUnLoged=()=>{
-
-  const {login}=useUser()
-
-  return(
+  return (
     <MenuStyled>
       <div className="divContainer">
-      <button onClick={()=>login()}>
-          <BiLogIn size={30} /> 
-             Entrar 
+        <button onClick={openModalLogin}>
+          <BiLogIn size={30} />
+          Entrar
         </button>
       </div>
-      </MenuStyled>
-  )
-}
+    </MenuStyled>
+  );
+};
 
-export default MenuUnLoged
+export default MenuUnLoged;

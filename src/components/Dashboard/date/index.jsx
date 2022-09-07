@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Date } from "./styles";
-import "react-dates/lib/css/_datepicker.css";
+// import "react-dates/lib/css/_datepicker.css";
+// Resolver(HASSAN)
 import { DashboardContext } from "../../../context/DashboardContext";
 
 const DateSelect = () => {
@@ -17,7 +18,7 @@ const DateSelect = () => {
         <input
           className="input-date"
           type="date"
-          name=""
+          name="date"
           id=""
           required
           value={currentDateFrom}
@@ -27,7 +28,7 @@ const DateSelect = () => {
         <input
           className="input-date"
           type="date"
-          name=""
+          name="date"
           id=""
           required
           value={currentDateTo}

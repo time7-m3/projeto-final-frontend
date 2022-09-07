@@ -6,8 +6,10 @@ import { registerSchema } from "../../validator/registerSchema";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { RegisterContext } from "../../context/RegisterContext";
+
 const Register = () => {
   const { registerUser } = useContext(RegisterContext);
+
   const {
     register,
     handleSubmit,
@@ -15,7 +17,9 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(registerSchema),
   });
+
   const navigate = useNavigate();
+
   return (
     <RegContainer>
       <div className="divImage">
@@ -60,7 +64,7 @@ const Register = () => {
         </form>
         <div className="divUserExist">
           <span className="spanUserExist">Já tem cadastro?</span>
-          <button className="btnBack" onClick={() => navigate("/dashboard")}>
+          <button className="btnBack" onClick={() => navigate("/")}>
             Voltar
           </button>
         </div>
