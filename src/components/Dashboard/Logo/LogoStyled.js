@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const LogoStyled = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */  
+  justify-content: center;  
+  
   /* margin-top: 20px; */
   
   /* margin: auto; */
@@ -15,7 +16,10 @@ export const LogoStyled = styled.div`
   span{
     color: var(--color1);    
   }
-  @media (min-width: 769px) {
+  @media (max-width: 769px) {
+    h1{
+      font-size: 24px;
+    }
       /* background-color: #ac5880;
       margin: auto;
       display: flex;
