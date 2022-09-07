@@ -1,12 +1,12 @@
 import { createContext, useState } from "react";
 export const DashboardContext = createContext({});
 const DashboardProvider = ({ children }) => {
-  const [currentMarcaCar, setMarcaCurrentCar] = useState("");
-  const [currentModeloCar, setModeloCurrentCar] = useState("");
-  const [currentAnoCar, setAnoCurrentCar] = useState(0);
-  const [currentCity, setCity] = useState("");
-  const [currentDateFrom, setCurrentDateFrom] = useState("");
-  const [currentDateTo, setCurrentDateTo] = useState("");
+  const [currentMarcaCar, setMarcaCurrentCar] = useState(null);
+  const [currentModeloCar, setModeloCurrentCar] = useState(null);
+  const [currentAnoCar, setAnoCurrentCar] = useState(null);
+  const [currentCity, setCity] = useState(null);
+  const [currentDateFrom, setCurrentDateFrom] = useState(null);
+  const [currentDateTo, setCurrentDateTo] = useState(null);
 
   return (
     <DashboardContext.Provider
