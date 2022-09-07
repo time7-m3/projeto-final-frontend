@@ -63,7 +63,7 @@ export const Main = styled.div`
       justify-content: space-around;
       padding: 0px 20px;
       max-width: 1400px;
-
+      width: 94%;
       max-height: 300px;
       padding: 10px;
       align-items: center;
@@ -202,19 +202,24 @@ export const Main = styled.div`
       padding: 32px;
       list-style: none;
     }
-    @media screen and (min-width: 426px) and( max-width: 768px) {
+    @media screen and (min-width: 426px) {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 5px;
     }
     @media screen and (min-width: 769px) {
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
-      justify-content: center;
+      max-height: 1400px;
+      width: 94%;
+      justify-content: flex-start;
+      // background-color: red;
       overflow: unset;
       list-style: none;
-      gap: 10px;
+      gap: 5px;
+      margin: 10px auto;
     }
   }
   .loadMore {
@@ -230,9 +235,6 @@ export const Main = styled.div`
     margin: 0 auto;
     width: 196px;
     height: 48px;
-    left: auto;
-    margin: 20px 10px;
-    top: 75%;
     @media screen and (min-width: 426px) {
       display: flex;
       align-items: center;
@@ -245,7 +247,7 @@ export const Main = styled.div`
 
       width: 196px;
       height: 48px;
-      left: 30%;
+      left: auto;
       top: 90%;
     }
     @media screen and (min-width: 769px) {
@@ -262,6 +264,24 @@ export const Main = styled.div`
       height: 48px;
       left: auto;
       top: 90%;
+    }
+  }
+  .loadMoreMobile {
+    display: none;
+    @media screen and (max-width: 425px) {
+      width: 70px;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      border-radius: 20px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background-color: #1a9988;
+      color: white;
     }
   }
 `;

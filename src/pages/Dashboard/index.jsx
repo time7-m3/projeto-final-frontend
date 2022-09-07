@@ -52,7 +52,12 @@ const Dashboard = () => {
     const newCarsFilters = obj.filter((elem) => {
       console.log(elem.city === currentCity);
       console.log(elem.city, currentCity);
-      if (elem.localizacao === currentCity) {
+      if (
+        elem.localizacao === currentCity ||
+        elem.marca === currentMarcaCar ||
+        elem.modelo === currentModeloCar ||
+        parseInt(elem.ano) == currentAnoCar
+      ) {
         return elem;
       }
       return;
@@ -83,8 +88,8 @@ const Dashboard = () => {
   const [carsFiltrados, setCarsFiltrados] = useState([]);
   const [numItem, setNumItem] = useState(6);
   const showMore = () => {
-    if (numItem + 1 <= carros.length) {
-      setNumItem(numItem + 1);
+    if (numItem + 4 <= carros.length) {
+      setNumItem(numItem + 4);
     } else {
       setNumItem(carros.length);
       toast.error("Todos os carros disponíveis já foram carregados!");
@@ -145,6 +150,9 @@ const Dashboard = () => {
           ) : (
             <IoReload onClick={(e) => e.preventDefault()} />
           )}
+          <button className="loadMoreMobile" onClick={() => showMore()}>
+            +
+          </button>
         </ul>
         {/* <ul>
           {carsFiltrados.length > 0
@@ -152,7 +160,7 @@ const Dashboard = () => {
             : carros.map((item) => <Car car={item} key={item.id} />)}
         </ul> */}
       </main>
-      <div className="loadMore" onClick={() => showMore}>
+      <div className="loadMore" onClick={() => showMore()}>
         Carregar mais...
       </div>
     </Main>
