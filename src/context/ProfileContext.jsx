@@ -20,7 +20,7 @@ const ProfileProvider = ({ children }) => {
   const editUser = (data) => {
     const token = localStorage.getItem("@loginToken");
 
-    console.log(data);
+    //console.log(data);
     api
       .patch(`/users/${user.id}`, data, {
         headers: { Authorization: `Bearer ${token}` },

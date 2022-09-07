@@ -12,7 +12,7 @@ const RegisterProvider = ({ children }) => {
       .post("/register", data)
       .then((response) => {
         navigate("/dashboard", { replace: true });
-        console.log(response);
+        //console.log(response);
       })
       .catch((err) => ({
         message: console.log(err.response.data),
