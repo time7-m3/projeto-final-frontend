@@ -174,4 +174,72 @@ export const ContainerForm = styled.form`
     font-family: "Poppins", sans-serif;
     font-size: 14px;
   }
+
+  @media (max-width: 450px) {
+    select {
+      background-position: 61px;
+      font-size: 11px;
+      width: 92px;
+      margin-right: 5px;
+    }
+
+    .dates {
+      width: 18.5rem;
+    }
+
+    .texto-ate {
+      margin-left: 6px;
+    }
+
+    .local {
+      width: 173px;
+    }
+
+    .url {
+      width: 18.5rem;
+    }
+
+    textarea {
+      height: 6.125rem;
+      width: 18.5rem;
+    }
+
+    .button-form {
+      width: 18.5rem;
+    }
+  }
+
+  @media (max-width: 346px) {
+    select {
+      width: 88px;
+    }
+
+    .dates {
+      width: 17.5rem;
+    }
+
+    .texto-ate {
+      margin-left: 6px;
+    }
+
+    .local {
+      width: 162px;
+    }
+
+    .money {
+      width: 110px;
+    }
+
+    .url {
+      width: 17.5rem;
+    }
+
+    textarea {
+      width: 17.5rem;
+    }
+
+    .button-form {
+      width: 17.5rem;
+    }
+  }
 `;
