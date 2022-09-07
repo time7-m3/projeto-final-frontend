@@ -21,6 +21,7 @@ const SelectSearch = () => {
     setCurrentDateTo,
   } = useContext(DashboardContext);
   const [cidade, setCidade] = useState([]);
+
   async function pegarCidades() {
     await api.get("/cars", {}).then(({ data }) => {
       //  console.log(data);
