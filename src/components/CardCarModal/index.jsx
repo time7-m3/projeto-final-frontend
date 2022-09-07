@@ -7,6 +7,7 @@ import bx_calendar_check from "../../assets/bx_calendar_check.svg";
 export const CardCar = ({ car }) => {
   const { setIsModalOpen, setIsPayModal } = useContext(RentContext);
   const modalRef = useRef();
+
   useEffect(() => {
     const handleClick = (e) => {
       if (!modalRef.current.contains(e.target)) {
@@ -22,7 +23,6 @@ export const CardCar = ({ car }) => {
   }, [setIsModalOpen]);
 
   const closeModal = () => {
-    console.log("erro");
     setIsModalOpen(false);
   };
 
