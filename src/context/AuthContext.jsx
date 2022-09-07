@@ -30,7 +30,6 @@ const LoginContext = ({ children }) => {
         setIsModalLogin(false);
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Algo de errado aconteceu!");
       });
   };

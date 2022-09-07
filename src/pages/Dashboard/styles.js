@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Main = styled.div`
   font-family: "Poppins";
   max-width: 1400px;
-  width: 90%;
+  width: 94%;
   @media screen and (max-width: 425px) {
     max-width: 360px;
     max-height: 640px;
@@ -226,11 +226,12 @@ export const Main = styled.div`
     background-color: #1a9988;
     color: white;
     border-radius: 20px;
-    position: fixed;
+
     margin: 0 auto;
     width: 196px;
     height: 48px;
     left: auto;
+    margin: 20px 10px;
     top: 75%;
     @media screen and (min-width: 426px) {
       display: flex;
@@ -241,7 +242,7 @@ export const Main = styled.div`
       background-color: #1a9988;
       color: white;
       border-radius: 20px;
-      position: fixed;
+
       width: 196px;
       height: 48px;
       left: 30%;
@@ -256,8 +257,7 @@ export const Main = styled.div`
       background-color: #1a9988;
       color: white;
       border-radius: 20px;
-      position: fixed;
-      position: fixed;
+
       width: 196px;
       height: 48px;
       left: auto;
