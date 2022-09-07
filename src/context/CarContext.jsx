@@ -20,7 +20,7 @@ const CarContext = ({ children }) => {
   const token = window.localStorage.getItem("@loginToken");
 
   const createCar = (data) => {
-    data.periodo = [...[], userInput, userInput2];
+    data.período = [...[], userInput, userInput2];
     data.alugado = false;
     data.userId = window.localStorage.getItem("@loginId");
     data.proprietario = window.localStorage.getItem("@loginProprietario");
