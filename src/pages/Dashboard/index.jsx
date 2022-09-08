@@ -83,44 +83,38 @@ const Dashboard = () => {
 
   const filtrando = (obj) => {
     const newCarsFilters = obj.filter((elem) => {
-      const dateSelect1 = currentDateFrom
+      let dateSelect1 = "";
+      dateSelect1 = currentDateFrom
         .toString()
         .slice(0, 10)
         .split("-")
         .reverse()
         .join("/");
-      const dateSelect2 = currentDateTo
-        .toString()
-        .slice(0, 10)
-        .split("-")
-        .reverse()
-        .join("/");
-
-      const dateElem1 = elem.período[0]
-        .toString()
-        .slice(0, 10)
-        .split("-")
-        .reverse()
-        .join("/");
-
-      const dateElem2 = elem.período[1]
+      let dateSelect2 = "";
+      dateSelect2 = currentDateTo
         .toString()
         .slice(0, 10)
         .split("-")
         .reverse()
         .join("/");
 
-      console.log(dateSelect1, dateSelect2);
+      let dateElem1 = "";
+      dateElem1 = elem.período[0]
+        .toString()
+        .slice(0, 10)
+        .split("-")
+        .reverse()
+        .join("/");
 
-      console.log(elem.city === currentCity);
-      console.log(elem.city, currentCity);
-      console.log("elemento date 1", dateElem1);
-      console.log("elemento date 2", dateElem2);
-      console.log(
-        "check  datas",
-        dateCheck(dateSelect1, dateSelect2, dateElem1) &&
-          dateCheck(dateSelect1, dateSelect2, dateElem2)
-      );
+      let dateElem2 = "";
+      dateElem2 = elem.período[1]
+        .toString()
+        .slice(0, 10)
+        .split("-")
+        .reverse()
+        .join("/");
+
+      console.log(dateSelect1, dateSelect2, dateElem1, dateElem2);
 
       if (
         elem.localizacao === currentCity ||
