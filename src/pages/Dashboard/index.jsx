@@ -1,4 +1,5 @@
 import { FiSearch } from "react-icons/fi";
+import { IoReload } from "react-icons/io5";
 import { Car } from "./../../components/Dashboard/car";
 import DatePicker from "./../../components/Dashboard/date";
 import Filters from "./../../components/Dashboard/filters";
@@ -6,7 +7,7 @@ import SelectSearch from "./../../components/Dashboard/select-city";
 import { Main } from "./styles";
 import { BiCalendar } from "react-icons/bi";
 import api from "./../../services/api";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useMemo } from "react";
 import { RentContext } from "../../context/RentContext";
 import { CardCar } from "./../../components/CardCarModal";
 import { PaymentModal } from "../../components/PaymentModal";
@@ -16,13 +17,11 @@ import CarContext, { AuthCarContext } from "../../context/CarContext";
 import ModalCreateCar from "../../components/ModalCreateCar";
 import { AuthContext } from "../../context/AuthContext";
 import ModalLogin from "../../components/ModalLogin";
-
+import { toast } from "react-hot-toast";
 const Dashboard = () => {
   const [carros, setCarros] = useState([]);
-
   const { isModalCar } = useContext(AuthCarContext);
   const { isModalLogin } = useContext(AuthContext);
-
   const {
     currentCar,
     setCurrentCar,
@@ -45,9 +44,28 @@ const Dashboard = () => {
     currentDateTo,
     setCurrentDateTo,
   } = useContext(DashboardContext);
-
-  async function getCarros() {
-    await api.get("/cars", {}).then(({ data }) => {
+  const filtrando = (obj) => {
+    const newCarsFilters = obj.filter((elem) => {
+      console.log(elem.city === currentCity);
+      console.log(elem.city, currentCity);
+      if (elem.localizacao === currentCity) {
+        return elem;
+      }
+      return;
+    });
+    console.log("filtro", newCarsFilters);
+    if (newCarsFilters.length === 0) {
+      toast.error("Indisponível");
+    } else if (newCarsFilters.length == 1) {
+      toast.success("Carro disponível");
+    } else {
+      toast.success("Carros disponíveis");
+    }
+    return newCarsFilters;
+  };
+  async function getCarros() {}
+  useEffect(() => {
+    api.get("/cars", {}).then(({ data }) => {
       setCarros(
         data.filter((item) => {
           if (item.alugado === false) {
@@ -56,11 +74,26 @@ const Dashboard = () => {
         })
       );
     });
-  }
-  useEffect(() => {
-    getCarros();
-  }, []);
+  }, [carros]);
   const [carsFiltrados, setCarsFiltrados] = useState([]);
+  const [numItem, setNumItem] = useState(6);
+  const showMore = () => {
+    if (numItem + 1 <= carros.length) {
+      setNumItem(numItem + 1);
+    } else {
+      setNumItem(carros.length);
+      toast.error("Todos os carros disponíveis já foram carregados!");
+    }
+  };
+  const itemsToShow = useMemo(() => {
+    return carsFiltrados.length > 0
+      ? carsFiltrados
+          .slice(0, numItem)
+          .map((item) => <Car car={item} key={item.id} />)
+      : carros
+          .slice(0, numItem)
+          .map((item) => <Car car={item} key={item.id} />);
+  }, [carros, carsFiltrados, numItem]);
   return (
     <Main>
       <Header />
@@ -81,19 +114,13 @@ const Dashboard = () => {
           <div
             className="mainHeaderSearch"
             onClick={() => {
-              setCarsFiltrados(
-                carros.filter((elem) => {
-                  //testes/
-                  if (currentCity === "") {
-                    return "";
-                  } else {
-                    if (elem.localizacao === currentCity) {
-                      return elem;
-                    }
-                  }
-                  return "";
-                })
+              console.log(
+                currentCity,
+                currentMarcaCar,
+                currentModeloCar,
+                currentAnoCar
               );
+              setCarsFiltrados(filtrando(carros));
               //setCity("");
             }}
           >
@@ -107,12 +134,19 @@ const Dashboard = () => {
         {isModalCar && <ModalCreateCar />}
         {isModalLogin && <ModalLogin />}
         <ul>
+          {itemsToShow.length ? (
+            itemsToShow
+          ) : (
+            <IoReload onClick={(e) => e.preventDefault()} />
+          )}
+        </ul>
+        {/* <ul>
           {carsFiltrados.length > 0
             ? carsFiltrados.map((item) => <Car car={item} key={item.id} />)
             : carros.map((item) => <Car car={item} key={item.id} />)}
-        </ul>
+        </ul> */}
       </main>
-      <div className="loadMore" onClick={() => alert("carregar mais")}>
+      <div className="loadMore" onClick={() => showMore()}>
         Carregar mais...
       </div>
     </Main>

@@ -6,19 +6,15 @@ import { useContext } from "react";
 import { AuthCarContext } from "../../../context/CarContext";
 import { AuthContext } from "../../../context/AuthContext";
 import toast from "react-hot-toast";
-
 const MenuLoged = () => {
   const { editProfile } = useUser();
-
   const { openModalCreateCar } = useContext(AuthCarContext);
-  const { setUser } = useContext(AuthContext);
-
+  const { setUser, user } = useContext(AuthContext);
   const logout = () => {
     toast.success("Logout");
     window.localStorage.clear();
     setUser(null);
   };
-
   return (
     <MenuStyled>
       <div className="divContainer">
@@ -31,7 +27,13 @@ const MenuLoged = () => {
           <p>Cadastrar carro</p>
         </button>
         <button onClick={() => editProfile()}>
-          <img src={User} alt="imagem de perfil do usuário" />
+          {user.imagem === "" ? (
+            <span></span>
+          ) : (
+            <div className="btnProfile">
+              <img src={user.imagem} alt="imagem de perfil do usuário" />
+            </div>
+          )}
           <p>Perfil</p>
         </button>
       </div>

@@ -26,7 +26,7 @@ const LoginContext = ({ children }) => {
         window.localStorage.setItem("@loginId", user.id);
         window.localStorage.setItem("@loginProprietario", user.name);
         toast.success("Usuário Logado com Sucesso!");
-        setUser(user.name);
+        setUser(user);
         setIsModalLogin(false);
       })
       .catch((err) => {
