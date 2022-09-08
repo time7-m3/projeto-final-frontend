@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const Main = styled.div`
   font-family: "Poppins";
+  max-width: 1400px;
+  width: 94%;
   @media screen and (max-width: 425px) {
+    margin-top: 14px;
     max-width: 360px;
     max-height: 640px;
     display: flex;
@@ -22,9 +25,10 @@ export const Main = styled.div`
     justify-content: center;
   }
   .mainHeader {
+    margin-top: 10px;
     @media screen and (max-width: 425px) {
-      margin-top: 9px;
-      margin: 0 auto;
+      margin-top: 15px;
+      //margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -32,7 +36,7 @@ export const Main = styled.div`
       padding: 0px 20px;
       padding: 10px;
       width: 337px;
-      height: 177px;
+      height: 190px;
       margin: 0 auto;
       border-radius: 20px;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -59,7 +63,8 @@ export const Main = styled.div`
       flex-direction: row;
       justify-content: space-around;
       padding: 0px 20px;
-      width: 90%;
+      max-width: 1400px;
+      width: 94%;
       max-height: 300px;
       padding: 10px;
       align-items: center;
@@ -75,6 +80,7 @@ export const Main = styled.div`
     justify-content: center;
     width: 60%;
     height: 50px;
+    margin: 0;
     @media screen and (max-width: 425px) {
       width: 320.6px;
       height: 50px;
@@ -112,7 +118,7 @@ export const Main = styled.div`
   .mainHeaderDates {
     margin-left: 10px;
     display: flex;
-    width: 280px;
+    width: 290px;
     height: 48px;
     align-items: center;
     justify-content: flex-start;
@@ -197,23 +203,52 @@ export const Main = styled.div`
       padding: 32px;
       list-style: none;
     }
-    @media screen and (min-width: 426px) and( max-width: 768px) {
+    @media screen and (min-width: 426px) {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 5px;
     }
     @media screen and (min-width: 769px) {
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
-      justify-content: center;
+      max-height: 1400px;
+      width: 94%;
+      justify-content: flex-start;
+      // background-color: red;
       overflow: unset;
       list-style: none;
-      gap: 10px;
+      gap: 5px;
+      margin: 10px auto;
     }
   }
   .loadMore {
-    @media screen and (min-width: 426px) and( max-width: 768px) {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #1a9988;
+    color: white;
+    border-radius: 20px;
+
+    margin: 0 auto;
+    width: 196px;
+    height: 48px;
+    @media screen and (min-width: 426px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      background-color: #1a9988;
+      color: white;
+      border-radius: 20px;
+
+      width: 196px;
+      height: 48px;
+      left: auto;
+      top: 90%;
     }
     @media screen and (min-width: 769px) {
       display: flex;
@@ -224,12 +259,29 @@ export const Main = styled.div`
       background-color: #1a9988;
       color: white;
       border-radius: 20px;
-      position: fixed;
-      position: fixed;
+
       width: 196px;
       height: 48px;
       left: auto;
       top: 90%;
+    }
+  }
+  .loadMoreMobile {
+    display: none;
+    @media screen and (max-width: 425px) {
+      width: 70px;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      border-radius: 20px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background-color: #1a9988;
+      color: white;
     }
   }
 `;

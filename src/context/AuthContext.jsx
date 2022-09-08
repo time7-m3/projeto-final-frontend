@@ -21,14 +21,16 @@ const LoginContext = ({ children }) => {
       .post("/login", data)
       .then((response) => {
         const { accessToken, user } = response.data;
-        console.log(response);
         window.localStorage.setItem("@loginToken", accessToken);
         window.localStorage.setItem("@loginId", user.id);
+        window.localStorage.setItem("@loginProprietario", user.name);
         toast.success("Usuário Logado com Sucesso!");
         setUser(user);
         setIsModalLogin(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error("Algo de errado aconteceu!");
+      });
   };
 
   return (

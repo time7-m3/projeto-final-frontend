@@ -3,7 +3,9 @@ import btnClose from "../../../assets/btnClose.svg";
 import btnDownOpen from "../../../assets/btnDownOpen.svg";
 import removeIcon from "../../../assets/removeIcon.svg";
 import { useContext, useRef, useState, useEffect } from "react";
-import { ProfileContext } from "../../../context/ProfileContext";
+import ProfileProvider, {
+  ProfileContext,
+} from "../../../context/ProfileContext";
 import { AuthContext } from "../../../context/AuthContext";
 
 const ModalPerfil = () => {
@@ -12,6 +14,7 @@ const ModalPerfil = () => {
   const { user } = useContext(AuthContext);
   const [newImage, setNewImage] = useState(user.imagem);
   const [editableImage, setEditableImage] = useState(false);
+  const { imagemProfile, setImagemProfile } = useContext(ProfileContext);
 
   const editImage = (e) => {
     e.preventDefault();
@@ -36,12 +39,16 @@ const ModalPerfil = () => {
 
   return (
     <PerfilMain>
-      <div className="modalInfosDiv">
+      <div className="modalInfosDiv" ref={modalRef}>
         <button className="btnCloseModal" onClick={closeModalProfile}>
           <img src={btnClose} alt="icone fechar modal" />
         </button>
         <button className="btnImagePerfil">
-          <img src={user.imagem} alt={user.name} />
+          {imagemProfile === null ? (
+            <img src={user.imagem} alt={user.name} />
+          ) : (
+            <img src={imagemProfile} alt={user.name} />
+          )}
         </button>
         <h1>Perfil</h1>
         <h2>Nome:</h2>
@@ -79,7 +86,7 @@ const ModalPerfil = () => {
               <ul className="listaCarros">
                 {user.carrosCadastrados.map((elem) => (
                   <li key={elem.id} className="itemCarro">
-                    <img scr={elem.imagem} />
+                    <img scr={elem.imagem} alt={elem.id} />
                     <button
                       className="btnRemoveCarro"
                       onClick={() => deleteCar(elem.id)}

@@ -1,5 +1,5 @@
 import api from "../services/api";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./AuthContext";
 
 export const ProfileContext = createContext({});
@@ -7,6 +7,7 @@ export const ProfileContext = createContext({});
 const ProfileProvider = ({ children }) => {
   const { user } = useContext(AuthContext);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [imagemProfile, setImagemProfile] = useState(null);
 
   const openModalProfile = () => {
     setIsProfileOpen(true);
@@ -44,6 +45,7 @@ const ProfileProvider = ({ children }) => {
       .then((response) => {
         console.log(response);
         setIsProfileOpen(false);
+        setImagemProfile(data);
       })
       .catch((err) => ({
         message: console.log(err.response.data),
@@ -58,6 +60,8 @@ const ProfileProvider = ({ children }) => {
         closeModalProfile,
         isProfileOpen,
         deleteCar,
+        setImagemProfile,
+        imagemProfile,
       }}
     >
       {children}

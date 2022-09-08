@@ -69,7 +69,7 @@ const Register = () => {
           </form>
           <div className="divUserExist">
             <span className="spanUserExist">Já tem cadastro?</span>
-            <button className="btnBack" onClick={() => navigate("/dashboard")}>
+            <button className="btnBack" onClick={() => navigate("/")}>
               Voltar
             </button>
           </div>
