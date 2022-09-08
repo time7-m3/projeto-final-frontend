@@ -53,7 +53,7 @@ export const MenuStyled = styled.div`
   .img-no-img {
     width: 22px;
     border-radius: 4px;
-    border: 1px solid black;
+    border: 1px solid white;
   }
   p {
     font-size: 16px;
@@ -105,7 +105,7 @@ export const MenuStyled = styled.div`
     }
     img,
     .btnProfile {
-      border: solid 2px var(--color1);
+      border: solid 2px var(--color0);
     }
     .divContainer_unloged {
       p {
