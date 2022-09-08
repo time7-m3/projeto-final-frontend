@@ -5,10 +5,11 @@ import { AuthContext } from "./AuthContext";
 export const ProfileContext = createContext({});
 
 const ProfileProvider = ({ children }) => {
-  const { user } = useContext(AuthContext);
+  const { user, loadUser } = useContext(AuthContext);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [imagemProfile, setImagemProfile] = useState(null);
 
+  console.log(user);
   const openModalProfile = () => {
     setIsProfileOpen(true);
   };
@@ -44,6 +45,7 @@ const ProfileProvider = ({ children }) => {
       })
       .then((response) => {
         console.log(response);
+        loadUser();
         setIsProfileOpen(false);
         setImagemProfile(data);
       })

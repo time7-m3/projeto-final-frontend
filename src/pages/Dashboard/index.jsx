@@ -24,7 +24,7 @@ import { toast } from "react-hot-toast";
 const Dashboard = () => {
   const [carros, setCarros] = useState([]);
 
-  const { isModalCar, setId } = useContext(AuthCarContext);
+  const { isModalCar } = useContext(AuthCarContext);
   const { isModalLogin } = useContext(AuthContext);
   const { isProfileOpen } = useContext(ProfileContext);
 
@@ -50,7 +50,6 @@ const Dashboard = () => {
           }
         })
       );
-      setId(data);
     });
   }, [carros]);
   const showMore = () => {
