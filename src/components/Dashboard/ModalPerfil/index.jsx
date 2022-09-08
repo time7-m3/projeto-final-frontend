@@ -5,6 +5,7 @@ import removeIcon from "../../../assets/removeIcon.svg";
 import { useContext, useRef, useState, useEffect } from "react";
 import { ProfileContext } from "../../../context/ProfileContext";
 import { AuthContext } from "../../../context/AuthContext";
+import User from "../../../assets/user-128.png";
 
 const ModalPerfil = () => {
   const { setIsProfileOpen, closeModalProfile, deleteCar, editUser } =
@@ -41,7 +42,11 @@ const ModalPerfil = () => {
           <img src={btnClose} alt="icone fechar modal" />
         </button>
         <button className="btnImagePerfil">
-          <img src={imagemProfile} alt={user.name} />
+          {imagemProfile === "" ? (
+            <img src={User} alt={user.name} /> //Trocar aqui se quiser
+          ) : (
+            <img src={imagemProfile} alt={user.name} />
+          )}
         </button>
         <h1>Perfil</h1>
         <h2>Nome:</h2>

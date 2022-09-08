@@ -17,9 +17,9 @@ import { AuthCarContext } from "../../context/CarContext";
 import ModalCreateCar from "../../components/ModalCreateCar";
 import { AuthContext } from "../../context/AuthContext";
 import ModalLogin from "../../components/ModalLogin";
+import { toast } from "react-hot-toast";
 import { ProfileContext } from "../../context/ProfileContext";
 import ModalPerfil from "../../components/Dashboard/ModalPerfil";
-import { toast } from "react-hot-toast";
 
 const Dashboard = () => {
   const [carros, setCarros] = useState([]);

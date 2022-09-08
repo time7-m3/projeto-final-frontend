@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Main = styled.div`
   font-family: "Poppins";
-  max-width: 1400px;
-  width: 94%;
+  max-width: 1200px;
+  width: 90%;
+
   @media screen and (max-width: 425px) {
     margin-top: 14px;
     max-width: 360px;
@@ -266,6 +267,7 @@ export const Main = styled.div`
       top: 90%;
     }
   }
+
   .loadMoreMobile {
     display: none;
     @media screen and (max-width: 425px) {

@@ -58,6 +58,7 @@ const ProfileProvider = ({ children }) => {
         closeModalProfile,
         isProfileOpen,
         deleteCar,
+        setIsProfileOpen,
       }}
     >
       {children}
