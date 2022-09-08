@@ -72,7 +72,6 @@ const CarContext = ({ children }) => {
     };
 
     const idCar = car.id;
-    console.log(idCar);
     api
       .patch(`/cars/${idCar}`, carro, {
         headers: {

@@ -17,6 +17,8 @@ import { AuthCarContext } from "../../context/CarContext";
 import ModalCreateCar from "../../components/ModalCreateCar";
 import { AuthContext } from "../../context/AuthContext";
 import ModalLogin from "../../components/ModalLogin";
+import { ProfileContext } from "../../context/ProfileContext";
+import ModalPerfil from "../../components/Dashboard/ModalPerfil";
 import { toast } from "react-hot-toast";
 
 const Dashboard = () => {
@@ -24,9 +26,12 @@ const Dashboard = () => {
 
   const { isModalCar } = useContext(AuthCarContext);
   const { isModalLogin } = useContext(AuthContext);
+  const { isProfileOpen } = useContext(ProfileContext);
+
   const { currentCar, isModalOpen, isPayModal } = useContext(RentContext);
   const [carsFiltrados, setCarsFiltrados] = useState([]);
   const [numItem, setNumItem] = useState(6);
+
   const {
     currentMarcaCar,
     currentModeloCar,
@@ -173,6 +178,7 @@ const Dashboard = () => {
         {isPayModal && <PaymentModal car={currentCar} />}
         {isModalCar && <ModalCreateCar />}
         {isModalLogin && <ModalLogin />}
+        {isProfileOpen && <ModalPerfil />}
         <ul>
           {itemsToShow.length ? (
             itemsToShow
