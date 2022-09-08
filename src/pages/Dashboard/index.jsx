@@ -110,20 +110,10 @@ const Dashboard = () => {
         .reverse()
         .join("/");
 
-      console.log(dateSelect1, dateSelect2);
-
-      console.log(elem.city === currentCity);
-      console.log(elem.city, currentCity);
-      console.log("elemento date 1", dateElem1);
-      console.log("elemento date 2", dateElem2);
-      console.log(
-        "check  datas",
-        dateCheck(dateSelect1, dateSelect2, dateElem1) &&
-          dateCheck(dateSelect1, dateSelect2, dateElem2)
-      );
+      console.log(dateSelect1, dateSelect2, dateElem1, dateElem2);
 
       if (
-        elem.localizacao === currentCity ||
+        elem.localizacao == currentCity ||
         elem.marca === currentMarcaCar ||
         elem.modelo === currentModeloCar ||
         parseInt(elem.ano) == currentAnoCar ||

@@ -5,8 +5,8 @@ const DashboardProvider = ({ children }) => {
   const [currentModeloCar, setModeloCurrentCar] = useState(null);
   const [currentAnoCar, setAnoCurrentCar] = useState(null);
   const [currentCity, setCity] = useState(null);
-  const [currentDateFrom, setCurrentDateFrom] = useState(null);
-  const [currentDateTo, setCurrentDateTo] = useState(null);
+  const [currentDateFrom, setCurrentDateFrom] = useState("");
+  const [currentDateTo, setCurrentDateTo] = useState("");
 
   return (
     <DashboardContext.Provider
