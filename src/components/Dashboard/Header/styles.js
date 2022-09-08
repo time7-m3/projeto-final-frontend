@@ -3,16 +3,15 @@ import styled from "styled-components";
 export const HeaderStyled = styled.div`
   display: flex;
   margin-top: 22px;
-  flex-direction: row;
   justify-content: space-between;
-  width: 94%;
-  max-width: 1000px;
+  width: 90%;
+  max-width: 1200px;
 
-    @media (max-width: 780px) {
+  @media (max-width: 780px) {
     justify-content: space-between;
-  } 
-  @media ( max-width:425px ) {
-      justify-content: center;
+  }
+  @media (max-width: 425px) {
+    justify-content: center;
   }
   /* @media (max-width: 320px)and (min-width: 779px){
     background-color: azure;
@@ -21,4 +20,4 @@ export const HeaderStyled = styled.div`
   display: flex;
   justify-content: space-around;
 }   */
-`
+`;

@@ -8,6 +8,7 @@ export const SearchCity = styled.div`
   align-items: center;
   justify-content: center;
   border: none;
+  width: 320.6px;
   background-color: #f4f4f4;
   .icon {
     font-size: 20px;

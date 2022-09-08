@@ -1,93 +1,105 @@
 import { PerfilMain } from "./styles";
 import btnClose from "../../../assets/btnClose.svg";
+import btnDownOpen from "../../../assets/btnDownOpen.svg";
 import removeIcon from "../../../assets/removeIcon.svg";
-
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useContext, useState } from "react";
-
-import { editUserSchema } from "../../../validator/editUserSchema";
+import { useContext, useRef, useState, useEffect } from "react";
 import { ProfileContext } from "../../../context/ProfileContext";
+import { AuthContext } from "../../../context/AuthContext";
+import User from "../../../assets/user-128.png";
 
 const ModalPerfil = () => {
-  const user = {
-    carrosAlugados: [],
-    carrosCadastrados: [
-      { id: 1, marca: "ford", modelo: "kenzie" },
-      { id: 2, marca: "ford", modelo: "kenzie" },
-    ],
-    confirmPassword: "123456",
-    email: "bruno@gmail.com",
-    id: 6,
-    imagem: "https://static-cse.canva.com/blob/759723/DrobotDeanCanva.jpg",
-    name: "Bruno Sergio",
-    telefone: "12985444785",
+  const { setIsProfileOpen, closeModalProfile, deleteCar, editUser } =
+    useContext(ProfileContext);
+  const { user, imagemProfile } = useContext(AuthContext);
+  const [newImage, setNewImage] = useState(user.imagem);
+  const [editableImage, setEditableImage] = useState(false);
+
+  const editImage = (e) => {
+    e.preventDefault();
+    setEditableImage(!editableImage);
   };
 
-  const { editUser, closeModal, deleteCar } = useContext(ProfileContext);
+  const modalRef = useRef();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: yupResolver(editUserSchema),
-  });
+  useEffect(() => {
+    const handleClick = (event) => {
+      if (!modalRef.current.contains(event.target)) {
+        setIsProfileOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClick);
+    };
+  }, [setIsProfileOpen]);
 
   return (
     <PerfilMain>
-      <button className="btnCloseModal" onClick={closeModal}>
-        <img src={btnClose} alt="" />
-      </button>
-      <button className="btnImagePerfil">
-        <img src={user.imagem} alt={user.name} />
-      </button>
-      <h1>Perfil</h1>
-      <h2>Nome</h2>
-      <p>{user.name}</p>
-      <h2>E-mail</h2>
-      <p>{user.email}</p>
-      <h2>Telefone</h2>
-      <p>{user.telefone}</p>
-      <form className="userInputs" onSubmit={handleSubmit(editUser)}>
-        {/* <h2>
-          Imagem
-          <button className="btnEdit" onClick={editName}>
-            {name}
-          </button>
-        </h2>
-        {editableImage && (
-          <>
-            <input
-              type="text"
-              // value={name}
-              placeholder="Digite um novo nome"
-              // onChange={(e) => setName(e.target.value)}
-              {...register("name")}
-            />
-            <span className="errorsSpan">{errors.name?.message}</span>
-          </>
-        )} */}
-
-        {user.carrosCadastrados.length > 0 && (
-          <>
-            <p>Meus carros:</p>
-            <div className="listaCarros">
-              {user.carrosCadastrados.map((elem) => (
-                <div className="itemCarro">
-                  <img scr={elem.imagem} />
-                  <button className="btnRemoveCarro" onClick={deleteCar}>
-                    <img src={removeIcon} />
-                  </button>
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-        <button type="submit" className="btnSalvar">
-          Salvar
+      <div className="modalInfosDiv" ref={modalRef}>
+        <button className="btnCloseModal" onClick={closeModalProfile}>
+          <img src={btnClose} alt="icone fechar modal" />
         </button>
-      </form>
+        <button className="btnImagePerfil">
+          {imagemProfile === "" ? (
+            <img src={User} alt={user.name} /> //Trocar aqui se quiser
+          ) : (
+            <img src={imagemProfile} alt={user.name} />
+          )}
+        </button>
+        <h1>Perfil</h1>
+        <h2>Nome:</h2>
+        <p>{user.name}</p>
+        <h2>E-mail:</h2>
+        <p>{user.email}</p>
+        <h2>Telefone:</h2>
+        <p>{user.telefone}</p>
+        <div className="divImagem">
+          <h2>
+            Imagem:
+            <button className="btnEdit" onClick={(e) => editImage(e)}>
+              <img src={btnDownOpen} alt="icone abrir edit" />
+            </button>
+          </h2>
+          {editableImage && (
+            <form
+              className="userInputs"
+              onSubmit={(e) => editUser(e, newImage)}
+            >
+              <input
+                type="text"
+                value={newImage}
+                placeholder="Cole a URL da sua imagem aqui"
+                onChange={(e) => setNewImage(e.target.value)}
+              />
+              <button className="btnSalvarImagem">Salvar</button>
+            </form>
+          )}
+        </div>
+        <>
+          {user.carrosCadastrados.length > 0 ? (
+            <>
+              <p>Meus carros:</p>
+              <ul className="listaCarros">
+                {user.carrosCadastrados.map((elem) => (
+                  <li key={elem.id} className="itemCarro">
+                    <img scr={elem.imagem} alt={elem.id} />
+                    <button
+                      className="btnRemoveCarro"
+                      onClick={() => deleteCar(elem.id)}
+                    >
+                      <img src={removeIcon} />
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <></>
+          )}
+        </>
+      </div>
     </PerfilMain>
   );
 };
