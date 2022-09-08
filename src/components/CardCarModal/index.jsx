@@ -63,16 +63,6 @@ export const CardCar = ({ car }) => {
           <p>Descrição:</p>
           <span>{car.descricao}</span>
         </div>
-        {/* <button
-          className="btnRentCar"
-          onClick={() => {
-            setIsPayModal(true);
-            closeModal();
-          }}
-        >
-          <img src={bx_calendar_check} alt="calendar" />
-          Alugar
-        </button> */}
         {user && (
           <button
             className="btnRentCar"
