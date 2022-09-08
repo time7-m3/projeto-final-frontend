@@ -98,4 +98,18 @@ export const Container = styled.div`
       position: absolute;
     }
   }
+
+  @media (max-width: 371px) {
+    .card-form {
+      width: 18.125rem;
+      height: 22.187rem;
+    }
+    .btn-cadastrar {
+      width: 16.25rem;
+    }
+
+    .closed-card-form {
+      margin-right: -250px;
+    }
+  }
 `;

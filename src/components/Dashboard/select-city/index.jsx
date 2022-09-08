@@ -37,7 +37,17 @@ const SelectSearch = () => {
   useEffect(() => {
     pegarCidades();
   }, []);
-
+  function removeDuplicate(items, prop) {
+    const checkedItems = {};
+    const uniqueArray = items.filter((item) => {
+      const isUnique = !checkedItems[`prop_${item[prop]}`]; //verifica
+      checkedItems[`prop_${item[prop]}`] = true; //cria local = true
+      return isUnique;
+    });
+    return uniqueArray;
+  }
+  //console.log(removeDuplicate(cidade, "label"));
+  const cidadesFiltradas = removeDuplicate(cidade, "label");
   const styles = {
     control: (base, state) => ({
       ...base,
@@ -59,7 +69,7 @@ const SelectSearch = () => {
       <div className="select">
         <Select
           defaultInputValue={currentCity}
-          options={cidade}
+          options={cidadesFiltradas}
           components={{
             DropdownIndicator: () => null,
             IndicatorSeparator: () => null,

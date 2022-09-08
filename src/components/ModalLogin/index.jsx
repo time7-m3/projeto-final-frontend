@@ -11,6 +11,7 @@ const ModalLogin = () => {
 
   const register = () => {
     navigate("/register", { replace: true });
+    closedModal();
   };
 
   const { setIsModalLogin } = useContext(AuthContext);

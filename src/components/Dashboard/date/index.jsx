@@ -18,7 +18,7 @@ const DateSelect = () => {
         <input
           className="input-date"
           type="date"
-          name=""
+          name="date"
           id=""
           required
           value={currentDateFrom}
@@ -28,7 +28,7 @@ const DateSelect = () => {
         <input
           className="input-date"
           type="date"
-          name=""
+          name="date"
           id=""
           required
           value={currentDateTo}

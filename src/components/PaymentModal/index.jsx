@@ -5,9 +5,11 @@ import { ModalBackground } from "../CardCarModal/styles";
 import { PayDiv } from "./styles";
 import group from "../../assets/group.svg";
 import coin from "../../assets/bx_dollar-circle.svg";
+import { AuthCarContext } from "../../context/CarContext";
 
-export const PaymentModal = () => {
-  const { setIsPayModal, setIsModalOpen, currentCar } = useContext(RentContext);
+export const PaymentModal = ({ car }) => {
+  const { setIsPayModal, setIsModalOpen } = useContext(RentContext);
+  const { alugarCarro } = useContext(AuthCarContext);
   const modalRef = useRef();
 
   useEffect(() => {
@@ -30,9 +32,9 @@ export const PaymentModal = () => {
     setIsModalOpen(true);
   };
 
-  const doPay = () => {
-    setIsPayModal(false);
-  };
+  // const doPay = () => {
+  //   setIsPayModal(false);
+  // };
 
   return (
     <>
@@ -51,7 +53,11 @@ export const PaymentModal = () => {
         <div className="pixImageBox">
           <img src={group} alt="pix"></img>
         </div>
-        <button className="btnPayment" onClick={() => doPay()}>
+        <button
+          id={car.id}
+          className="btnPayment"
+          onClick={() => alugarCarro(car)}
+        >
           <img src={coin} alt="pagamento"></img>Pagamento efetuado
         </button>
       </PayDiv>

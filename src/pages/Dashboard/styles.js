@@ -2,7 +2,21 @@ import styled from "styled-components";
 
 export const Main = styled.div`
   font-family: "Poppins";
+  max-width: 1150px;
+  width: 90%;
+
+  main {
+    width: 100%;
+
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+    }
+  }
+
   @media screen and (max-width: 425px) {
+    margin-top: 14px;
     max-width: 360px;
     max-height: 640px;
     display: flex;
@@ -13,6 +27,16 @@ export const Main = styled.div`
   @media screen and (min-width: 426px) and( max-width: 768px) {
     display: flex;
     flex-direction: column;
+
+    main {
+      width: 100%;
+
+      ul {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+    }
   }
 
   @media screen and (min-width: 769px) {
@@ -20,20 +44,34 @@ export const Main = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    main {
+      width: 100%;
+
+      ul {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+      }
+    }
   }
+
   .mainHeader {
+    margin-top: 16px;
+    min-height: 66px;
+    width: 100%;
+    padding: 0px 10px;
+
     @media screen and (max-width: 425px) {
-      margin-top: 9px;
-      margin: 0 auto;
+      margin-top: 15px;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-evenly;
-      padding: 0px 20px;
       padding: 10px;
       width: 337px;
-      height: 177px;
-      margin: 0 auto;
+      height: 190px;
+      margin: 10 auto;
       border-radius: 20px;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
@@ -41,11 +79,9 @@ export const Main = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      padding: 0px 20px;
-      width: 90%;
+      padding: 10px;
       height: 100%;
       max-height: 300px;
-      padding: 10px;
       align-items: center;
       justify-items: center;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -58,8 +94,7 @@ export const Main = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      padding: 0px 20px;
-      width: 90%;
+      max-width: 1400px;
       max-height: 300px;
       padding: 10px;
       align-items: center;
@@ -73,16 +108,21 @@ export const Main = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 60%;
+    /* width: 60%; */
     height: 50px;
+    margin: 0;
+
     @media screen and (max-width: 425px) {
-      width: 320.6px;
+      width: 100%;
       height: 50px;
     }
+
     @media screen and (min-width: 426px) and( max-width: 768px) {
+      width: 100%;
     }
+
     @media screen and (min-width: 769px) {
-      width: 403.04px;
+      width: 30%;
       height: 50px;
       margin: 0;
     }
@@ -95,6 +135,7 @@ export const Main = styled.div`
       align-items: center;
     }
     @media screen and (min-width: 426px) and( max-width: 768px) {
+      width: 100%;
     }
     @media screen and (min-width: 769px) {
       display: flex;
@@ -112,7 +153,7 @@ export const Main = styled.div`
   .mainHeaderDates {
     margin-left: 10px;
     display: flex;
-    width: 280px;
+    width: 290px;
     height: 48px;
     align-items: center;
     justify-content: flex-start;
@@ -197,23 +238,52 @@ export const Main = styled.div`
       padding: 32px;
       list-style: none;
     }
-    @media screen and (min-width: 426px) and( max-width: 768px) {
+    @media screen and (min-width: 426px) {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 5px;
     }
     @media screen and (min-width: 769px) {
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
-      justify-content: center;
+      max-height: 1400px;
+      width: 94%;
+      justify-content: flex-start;
+      // background-color: red;
       overflow: unset;
       list-style: none;
-      gap: 10px;
+      gap: 5px;
+      margin: 10px auto;
     }
   }
   .loadMore {
-    @media screen and (min-width: 426px) and( max-width: 768px) {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: #1a9988;
+    color: white;
+    border-radius: 20px;
+
+    margin: 0 auto;
+    width: 196px;
+    height: 48px;
+    @media screen and (min-width: 426px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      background-color: #1a9988;
+      color: white;
+      border-radius: 20px;
+
+      width: 196px;
+      height: 48px;
+      left: auto;
+      top: 90%;
     }
     @media screen and (min-width: 769px) {
       display: flex;
@@ -224,12 +294,30 @@ export const Main = styled.div`
       background-color: #1a9988;
       color: white;
       border-radius: 20px;
-      position: fixed;
-      position: fixed;
+
       width: 196px;
       height: 48px;
       left: auto;
       top: 90%;
+    }
+  }
+
+  .loadMoreMobile {
+    display: none;
+    @media screen and (max-width: 425px) {
+      width: 70px;
+      height: 30px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      border-radius: 20px;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      background-color: #1a9988;
+      color: white;
     }
   }
 `;

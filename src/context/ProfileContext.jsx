@@ -1,54 +1,65 @@
 import api from "../services/api";
-import { createContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { AuthContext } from "./AuthContext";
 
 export const ProfileContext = createContext({});
 
 const ProfileProvider = ({ children }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { user, setImagemProfile } = useContext(AuthContext);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const user = {
-    carrosAlugados: [],
-    carrosCadastrados: [],
-    confirmPassword: "123456",
-    email: "bruno@gmail.com",
-    id: 6,
-    imagem: "https://static-cse.canva.com/blob/759723/DrobotDeanCanva.jpg",
-    name: "Bruno Sergio",
-    telefone: "12985444785",
+  const openModalProfile = () => {
+    setIsProfileOpen(true);
   };
 
-  const editUser = (data) => {
+  const closeModalProfile = () => {
+    setIsProfileOpen(false);
+  };
+
+  const deleteCar = (car) => {
     const token = localStorage.getItem("@loginToken");
 
-    console.log(data);
     api
-      .patch(`/users/${user.id}`, data, {
+      .delete(`/cars/${user.id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         console.log(response);
-        setIsModalOpen(false);
       })
       .catch((err) => ({
         message: console.log(err.response.data),
       }));
   };
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
+  const editUser = (e, data) => {
+    e.preventDefault();
+    const imagem = { imagem: data };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+    const token = localStorage.getItem("@loginToken");
 
-  const deleteCar = (car) => {
-    // const filter = user.carrosCadastrados.filter((elem) => elem.id !== car.id).map((elem) =>)
+    api
+      .patch(`/users/${user.id}`, imagem, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        setIsProfileOpen(false);
+        setImagemProfile(data);
+      })
+      .catch((err) => ({
+        message: console.log(err.response.data),
+      }));
   };
 
   return (
     <ProfileContext.Provider
-      value={{ editUser, openModal, closeModal, isModalOpen, deleteCar }}
+      value={{
+        editUser,
+        openModalProfile,
+        closeModalProfile,
+        isProfileOpen,
+        deleteCar,
+        setIsProfileOpen,
+      }}
     >
       {children}
     </ProfileContext.Provider>
