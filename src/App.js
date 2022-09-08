@@ -9,6 +9,7 @@ import CarContext from "./context/CarContext";
 import RentProvider from "./context/RentContext";
 import DashboardProvider from "./context/DashboardContext";
 import { UserProvider } from "./context/HeaderContext";
+import ProfileProvider from "./context/ProfileContext";
 //import UserProvider from "./context/HeaderContext";
 
 function App() {
@@ -16,17 +17,19 @@ function App() {
     <div className="App">
       <LoginContext>
         <RegisterProvider>
-          <CarContext>
-            <RentProvider>
-              <DashboardProvider>
-                <UserProvider>
-                  <Toaster />
-                  <Global />
-                  <RoutesMain />
-                </UserProvider>
-              </DashboardProvider>
-            </RentProvider>
-          </CarContext>
+          <ProfileProvider>
+            <CarContext>
+              <RentProvider>
+                <DashboardProvider>
+                  <UserProvider>
+                    <Toaster />
+                    <Global />
+                    <RoutesMain />
+                  </UserProvider>
+                </DashboardProvider>
+              </RentProvider>
+            </CarContext>
+          </ProfileProvider>
         </RegisterProvider>
       </LoginContext>
     </div>

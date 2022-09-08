@@ -16,12 +16,15 @@ import CarContext, { AuthCarContext } from "../../context/CarContext";
 import ModalCreateCar from "../../components/ModalCreateCar";
 import { AuthContext } from "../../context/AuthContext";
 import ModalLogin from "../../components/ModalLogin";
+import { ProfileContext } from "../../context/ProfileContext";
+import ModalPerfil from "../../components/Dashboard/ModalPerfil";
 
 const Dashboard = () => {
   const [carros, setCarros] = useState([]);
 
   const { isModalCar } = useContext(AuthCarContext);
   const { isModalLogin } = useContext(AuthContext);
+  const { isProfileOpen } = useContext(ProfileContext);
 
   const {
     currentCar,
@@ -106,6 +109,7 @@ const Dashboard = () => {
         {isPayModal && <PaymentModal />}
         {isModalCar && <ModalCreateCar />}
         {isModalLogin && <ModalLogin />}
+        {isProfileOpen && <ModalPerfil />}
         <ul>
           {carsFiltrados.length > 0
             ? carsFiltrados.map((item) => <Car car={item} key={item.id} />)
