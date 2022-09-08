@@ -5,11 +5,9 @@ import { AuthContext } from "./AuthContext";
 export const ProfileContext = createContext({});
 
 const ProfileProvider = ({ children }) => {
-  const { user, loadUser } = useContext(AuthContext);
+  const { user, setImagemProfile } = useContext(AuthContext);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [imagemProfile, setImagemProfile] = useState(null);
 
-  console.log(user);
   const openModalProfile = () => {
     setIsProfileOpen(true);
   };
@@ -44,8 +42,6 @@ const ProfileProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        console.log(response);
-        loadUser();
         setIsProfileOpen(false);
         setImagemProfile(data);
       })
@@ -62,8 +58,6 @@ const ProfileProvider = ({ children }) => {
         closeModalProfile,
         isProfileOpen,
         deleteCar,
-        setImagemProfile,
-        imagemProfile,
       }}
     >
       {children}

@@ -7,23 +7,25 @@ export const AuthContext = createContext();
 const LoginContext = ({ children }) => {
   const [isModalLogin, setIsModalLogin] = useState(false);
   const [user, setUser] = useState(null);
-  console.log(user);
+  const [imagemProfile, setImagemProfile] = useState(null);
+
   useEffect(() => {
-    loadUser();
-  }, []);
-  async function loadUser() {
-    const token = window.localStorage.getItem("@authContext:token");
-    const idUsuario = window.localStorage.getItem("@loginId");
-    if (token) {
-      try {
-        api.defaults.headers.common.authorization = `Bearer ${token}`;
-        const { data } = await api.get(`/users/${idUsuario}`);
-        setUser(data);
-      } catch (error) {
-        console.error(error);
+    async function loadUser() {
+      const token = window.localStorage.getItem("@authContext:token");
+      const idUsuario = window.localStorage.getItem("@loginId");
+      if (token) {
+        try {
+          api.defaults.headers.common.authorization = `Bearer ${token}`;
+          const { data } = await api.get(`/users/${idUsuario}`);
+          setUser(data);
+          setImagemProfile(user.imagem);
+        } catch (error) {
+          console.error(error);
+        }
       }
     }
-  }
+    loadUser();
+  }, []);
 
   const openModalLogin = () => {
     setIsModalLogin(true);
@@ -43,6 +45,7 @@ const LoginContext = ({ children }) => {
         window.localStorage.setItem("@loginProprietario", user.name);
         toast.success("Usuário Logado com Sucesso!");
         setUser(user);
+        setImagemProfile(user.imagem);
         setIsModalLogin(false);
       })
       .catch((err) => {
@@ -60,7 +63,8 @@ const LoginContext = ({ children }) => {
         closedModalLogin,
         user,
         setUser,
-        loadUser,
+        imagemProfile,
+        setImagemProfile,
       }}
     >
       {children}
