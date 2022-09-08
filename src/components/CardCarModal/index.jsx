@@ -1,11 +1,13 @@
 import { CarDiv, ModalBackground } from "./styles";
 import { RentContext } from "../../context/RentContext";
+import { AuthContext } from "../../context/AuthContext";
 import { useContext, useEffect, useRef } from "react";
 import btnClose from "../../assets/btnClose.svg";
 import bx_calendar_check from "../../assets/bx_calendar_check.svg";
 
 export const CardCar = ({ car }) => {
   const { setIsModalOpen, setIsPayModal } = useContext(RentContext);
+  const { user } = useContext(AuthContext);
   const modalRef = useRef();
 
   useEffect(() => {
@@ -61,7 +63,7 @@ export const CardCar = ({ car }) => {
           <p>Descrição:</p>
           <span>{car.descricao}</span>
         </div>
-        <button
+        {/* <button
           className="btnRentCar"
           onClick={() => {
             setIsPayModal(true);
@@ -70,7 +72,19 @@ export const CardCar = ({ car }) => {
         >
           <img src={bx_calendar_check} alt="calendar" />
           Alugar
-        </button>
+        </button> */}
+        {user && (
+          <button
+            className="btnRentCar"
+            onClick={() => {
+              setIsPayModal(true);
+              closeModal();
+            }}
+          >
+            <img src={bx_calendar_check} alt="calendar" />
+            Alugar
+          </button>
+        )}
       </CarDiv>
     </>
   );
