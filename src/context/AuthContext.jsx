@@ -21,7 +21,6 @@ const LoginContext = ({ children }) => {
       .post("/login", data)
       .then((response) => {
         const { accessToken, user } = response.data;
-        console.log(response);
         window.localStorage.setItem("@loginToken", accessToken);
         window.localStorage.setItem("@loginId", user.id);
         window.localStorage.setItem("@loginProprietario", user.name);
@@ -30,7 +29,6 @@ const LoginContext = ({ children }) => {
         setIsModalLogin(false);
       })
       .catch((err) => {
-        console.log(err);
         toast.error("Algo de errado aconteceu!");
       });
   };

@@ -24,51 +24,18 @@ const Dashboard = () => {
 
   const { isModalCar } = useContext(AuthCarContext);
   const { isModalLogin } = useContext(AuthContext);
-
-  const {
-    currentCar,
-    setCurrentCar,
-    isModalOpen,
-    setIsModalOpen,
-    isPayModal,
-    setIsPayModal,
-  } = useContext(RentContext);
+  const { currentCar, isModalOpen, isPayModal } = useContext(RentContext);
+  const [carsFiltrados, setCarsFiltrados] = useState([]);
+  const [numItem, setNumItem] = useState(6);
   const {
     currentMarcaCar,
-    setMarcaCurrentCar,
     currentModeloCar,
-    setModeloCurrentCar,
     currentAnoCar,
-    setAnoCurrentCar,
     currentCity,
-    setCity,
     currentDateFrom,
-    setCurrentDateFrom,
     currentDateTo,
-    setCurrentDateTo,
   } = useContext(DashboardContext);
 
-  const filtrando = (obj) => {
-    const newCarsFilters = obj.filter((elem) => {
-      console.log(elem.city === currentCity);
-      console.log(elem.city, currentCity);
-      if (elem.localizacao === currentCity) {
-        return elem;
-      }
-      return;
-    });
-    console.log("filtro", newCarsFilters);
-    if (newCarsFilters.length === 0) {
-      toast.error("Indisponível");
-    } else if (newCarsFilters.length == 1) {
-      toast.success("Carro disponível");
-    } else {
-      toast.success("Carros disponíveis");
-    }
-    return newCarsFilters;
-  };
-
-  async function getCarros() {}
   useEffect(() => {
     api.get("/cars", {}).then(({ data }) => {
       setCarros(
@@ -80,11 +47,9 @@ const Dashboard = () => {
       );
     });
   }, [carros]);
-  const [carsFiltrados, setCarsFiltrados] = useState([]);
-  const [numItem, setNumItem] = useState(6);
   const showMore = () => {
-    if (numItem + 1 <= carros.length) {
-      setNumItem(numItem + 1);
+    if (numItem + 4 <= carros.length) {
+      setNumItem(numItem + 4);
     } else {
       setNumItem(carros.length);
       toast.error("Todos os carros disponíveis já foram carregados!");
@@ -99,6 +64,86 @@ const Dashboard = () => {
           .slice(0, numItem)
           .map((item) => <Car car={item} key={item.id} />);
   }, [carros, carsFiltrados, numItem]);
+
+  function dateCheck(Date_1, Date_2, Date_to_check) {
+    const D_1 = Date_1.split("/");
+    const D_2 = Date_2.split("/");
+    const D_3 = Date_to_check.split("/");
+
+    const d1 = new Date(D_1[2], parseInt(D_1[1]) - 1, D_1[0]);
+    const d2 = new Date(D_2[2], parseInt(D_2[1]) - 1, D_2[0]);
+    const d3 = new Date(D_3[2], parseInt(D_3[1]) - 1, D_3[0]);
+
+    if (d3 > d1 && d3 < d2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  const filtrando = (obj) => {
+    const newCarsFilters = obj.filter((elem) => {
+      const dateSelect1 = currentDateFrom
+        .toString()
+        .slice(0, 10)
+        .split("-")
+        .reverse()
+        .join("/");
+      const dateSelect2 = currentDateTo
+        .toString()
+        .slice(0, 10)
+        .split("-")
+        .reverse()
+        .join("/");
+
+      const dateElem1 = elem.período[0]
+        .toString()
+        .slice(0, 10)
+        .split("-")
+        .reverse()
+        .join("/");
+
+      const dateElem2 = elem.período[1]
+        .toString()
+        .slice(0, 10)
+        .split("-")
+        .reverse()
+        .join("/");
+
+      console.log(dateSelect1, dateSelect2);
+
+      console.log(elem.city === currentCity);
+      console.log(elem.city, currentCity);
+      console.log("elemento date 1", dateElem1);
+      console.log("elemento date 2", dateElem2);
+      console.log(
+        "check  datas",
+        dateCheck(dateSelect1, dateSelect2, dateElem1) &&
+          dateCheck(dateSelect1, dateSelect2, dateElem2)
+      );
+
+      if (
+        elem.localizacao === currentCity ||
+        elem.marca === currentMarcaCar ||
+        elem.modelo === currentModeloCar ||
+        parseInt(elem.ano) == currentAnoCar ||
+        (dateCheck(dateSelect1, dateSelect2, dateElem1) &&
+          dateCheck(dateSelect1, dateSelect2, dateElem2))
+      ) {
+        return elem;
+      }
+      return;
+    });
+    console.log("filtro", newCarsFilters);
+    if (newCarsFilters.length === 0) {
+      toast.error("Indisponível");
+    } else if (newCarsFilters.length == 1) {
+      toast.success("Carro disponível");
+    } else {
+      toast.success("Carros disponíveis");
+    }
+    return newCarsFilters;
+  };
 
   return (
     <Main>
@@ -136,7 +181,7 @@ const Dashboard = () => {
       </div>
       <main>
         {isModalOpen && <CardCar car={currentCar} />}
-        {isPayModal && <PaymentModal />}
+        {isPayModal && <PaymentModal car={currentCar} />}
         {isModalCar && <ModalCreateCar />}
         {isModalLogin && <ModalLogin />}
         <ul>
@@ -145,6 +190,9 @@ const Dashboard = () => {
           ) : (
             <IoReload onClick={(e) => e.preventDefault()} />
           )}
+          <button className="loadMoreMobile" onClick={() => showMore()}>
+            +
+          </button>
         </ul>
         {/* <ul>
           {carsFiltrados.length > 0
@@ -152,7 +200,7 @@ const Dashboard = () => {
             : carros.map((item) => <Car car={item} key={item.id} />)}
         </ul> */}
       </main>
-      <div className="loadMore" onClick={() => showMore}>
+      <div className="loadMore" onClick={() => showMore()}>
         Carregar mais...
       </div>
     </Main>
