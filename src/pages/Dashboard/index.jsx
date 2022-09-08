@@ -83,31 +83,27 @@ const Dashboard = () => {
 
   const filtrando = (obj) => {
     const newCarsFilters = obj.filter((elem) => {
-      let dateSelect1 = "";
-      dateSelect1 = currentDateFrom
+      const dateSelect1 = currentDateFrom
         .toString()
         .slice(0, 10)
         .split("-")
         .reverse()
         .join("/");
-      let dateSelect2 = "";
-      dateSelect2 = currentDateTo
-        .toString()
-        .slice(0, 10)
-        .split("-")
-        .reverse()
-        .join("/");
-
-      let dateElem1 = "";
-      dateElem1 = elem.período[0]
+      const dateSelect2 = currentDateTo
         .toString()
         .slice(0, 10)
         .split("-")
         .reverse()
         .join("/");
 
-      let dateElem2 = "";
-      dateElem2 = elem.período[1]
+      const dateElem1 = elem.período[0]
+        .toString()
+        .slice(0, 10)
+        .split("-")
+        .reverse()
+        .join("/");
+
+      const dateElem2 = elem.período[1]
         .toString()
         .slice(0, 10)
         .split("-")
@@ -117,7 +113,7 @@ const Dashboard = () => {
       console.log(dateSelect1, dateSelect2, dateElem1, dateElem2);
 
       if (
-        elem.localizacao === currentCity ||
+        elem.localizacao == currentCity ||
         elem.marca === currentMarcaCar ||
         elem.modelo === currentModeloCar ||
         parseInt(elem.ano) == currentAnoCar ||
