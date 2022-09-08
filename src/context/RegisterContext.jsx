@@ -11,7 +11,7 @@ const RegisterProvider = ({ children }) => {
     api
       .post("/register", data)
       .then((response) => {
-        navigate("/dashboard", { replace: true });
+        navigate("/", { replace: true });
         //console.log(response);
       })
       .catch((err) => ({
