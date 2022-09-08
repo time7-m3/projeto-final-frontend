@@ -49,6 +49,12 @@ export const MenuStyled = styled.div`
   img {
     height: 100%;
   }
+
+  .img-no-img {
+    width: 22px;
+    border-radius: 4px;
+    border: 1px solid black;
+  }
   p {
     font-size: 16px;
     margin-left: 5px;
