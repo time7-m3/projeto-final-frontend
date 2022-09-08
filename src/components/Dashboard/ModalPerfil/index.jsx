@@ -77,20 +77,24 @@ const ModalPerfil = () => {
             </form>
           )}
         </div>
-        <>
+        {/* <>
           {user.carrosCadastrados.length > 0 ? (
             <>
               <p>Meus carros:</p>
               <ul className="listaCarros">
                 {user.carrosCadastrados.map((elem) => (
-                  <li key={elem.id} className="itemCarro">
-                    <img scr={elem.imagem} alt={elem.id} />
+                  <li key={elem.modelo} className="itemCarro">
                     <button
                       className="btnRemoveCarro"
-                      onClick={() => deleteCar(elem.id)}
+                      onClick={() => deleteCar(elem)}
                     >
-                      <img src={removeIcon} />
+                      <img src={removeIcon} alt="icone deletar carro" />
                     </button>
+                    <img
+                      className="imgCarro"
+                      src={elem.imagem}
+                      alt={elem.modelo}
+                    />
                   </li>
                 ))}
               </ul>
@@ -98,7 +102,7 @@ const ModalPerfil = () => {
           ) : (
             <></>
           )}
-        </>
+        </> */}
       </div>
     </PerfilMain>
   );

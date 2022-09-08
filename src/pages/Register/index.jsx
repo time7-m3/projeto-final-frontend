@@ -7,9 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { RegisterContext } from "../../context/RegisterContext";
 import Header from "../../components/Dashboard/Header";
+import ModalLogin from "../../components/ModalLogin";
+import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {
   const { registerUser } = useContext(RegisterContext);
+  const { isModalLogin } = useContext(AuthContext);
 
   const {
     register,
@@ -23,7 +26,8 @@ const Register = () => {
 
   return (
     <RegContainer>
-      <Header />
+      {/* {isModalLogin && <ModalLogin />}
+      <Header /> */}
       <div className="container">
         <div className="divImage">
           <img src={imageRegister} alt="Imagem Carro" />

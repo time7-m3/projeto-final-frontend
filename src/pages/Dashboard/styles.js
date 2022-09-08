@@ -2,8 +2,18 @@ import styled from "styled-components";
 
 export const Main = styled.div`
   font-family: "Poppins";
-  max-width: 1200px;
+  max-width: 1150px;
   width: 90%;
+
+  main {
+    width: 100%;
+
+    ul {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+    }
+  }
 
   @media screen and (max-width: 425px) {
     margin-top: 14px;
@@ -17,6 +27,16 @@ export const Main = styled.div`
   @media screen and (min-width: 426px) and( max-width: 768px) {
     display: flex;
     flex-direction: column;
+
+    main {
+      width: 100%;
+
+      ul {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+    }
   }
 
   @media screen and (min-width: 769px) {
@@ -24,21 +44,34 @@ export const Main = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    main {
+      width: 100%;
+
+      ul {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+      }
+    }
   }
+
   .mainHeader {
-    margin-top: 10px;
+    margin-top: 16px;
+    min-height: 66px;
+    width: 100%;
+    padding: 0px 10px;
+
     @media screen and (max-width: 425px) {
       margin-top: 15px;
-      //margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-evenly;
-      padding: 0px 20px;
       padding: 10px;
       width: 337px;
       height: 190px;
-      margin: 0 auto;
+      margin: 10 auto;
       border-radius: 20px;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     }
@@ -46,11 +79,9 @@ export const Main = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      padding: 0px 20px;
-      width: 90%;
+      padding: 10px;
       height: 100%;
       max-height: 300px;
-      padding: 10px;
       align-items: center;
       justify-items: center;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -63,9 +94,7 @@ export const Main = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-      padding: 0px 20px;
       max-width: 1400px;
-      width: 94%;
       max-height: 300px;
       padding: 10px;
       align-items: center;
@@ -79,17 +108,21 @@ export const Main = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    width: 60%;
+    /* width: 60%; */
     height: 50px;
     margin: 0;
+
     @media screen and (max-width: 425px) {
-      width: 320.6px;
+      width: 100%;
       height: 50px;
     }
+
     @media screen and (min-width: 426px) and( max-width: 768px) {
+      width: 100%;
     }
+
     @media screen and (min-width: 769px) {
-      width: 403.04px;
+      width: 30%;
       height: 50px;
       margin: 0;
     }
@@ -102,6 +135,7 @@ export const Main = styled.div`
       align-items: center;
     }
     @media screen and (min-width: 426px) and( max-width: 768px) {
+      width: 100%;
     }
     @media screen and (min-width: 769px) {
       display: flex;

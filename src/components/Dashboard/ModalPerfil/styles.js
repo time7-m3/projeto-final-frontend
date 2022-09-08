@@ -141,5 +141,51 @@ export const PerfilMain = styled.div`
         }
       }
     }
+
+    .listaCarros {
+      display: flex;
+      justify-content: flex-start;
+
+      width: 100%;
+      margin-top: -20px;
+      gap: 8px;
+
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100px;
+        height: 70px;
+
+        border-radius: 8px;
+
+        background-color: aqua;
+
+        overflow: hidden;
+
+        .imgCarro {
+          width: inherit;
+          height: inherit;
+        }
+
+        .btnRemoveCarro {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          position: relative;
+          left: 110px;
+
+          width: 24px;
+          height: 24px;
+
+          border-style: none;
+          border-radius: 50%;
+
+          background-color: var(--color4);
+        }
+      }
+    }
   }
 `;

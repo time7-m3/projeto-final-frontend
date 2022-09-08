@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 export const AuthContext = createContext();
@@ -8,6 +9,8 @@ const LoginContext = ({ children }) => {
   const [isModalLogin, setIsModalLogin] = useState(false);
   const [user, setUser] = useState(null);
   const [imagemProfile, setImagemProfile] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function loadUser() {
@@ -47,6 +50,7 @@ const LoginContext = ({ children }) => {
         setUser(user);
         setImagemProfile(user.imagem);
         setIsModalLogin(false);
+        navigate("/", { replace: true });
       })
       .catch((err) => {
         toast.error("Algo de errado aconteceu!");

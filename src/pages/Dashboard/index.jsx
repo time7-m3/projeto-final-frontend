@@ -141,59 +141,61 @@ const Dashboard = () => {
   };
 
   return (
-    <Main>
+    <>
       <Header />
-      <div className="mainHeader">
-        <div className="mainHeaderLocation">
-          <SelectSearch />
-        </div>
-        <div className="mainHeaderFilters">
-          <Filters />
-        </div>
-        <div className="mainHeaderDateSearch">
-          <div className="mainHeaderDates">
-            <div className="mainHeaderDatesIcon">
-              <BiCalendar />
+      <Main>
+        <div className="mainHeader">
+          <div className="mainHeaderLocation">
+            <SelectSearch />
+          </div>
+          <div className="mainHeaderFilters">
+            <Filters />
+          </div>
+          <div className="mainHeaderDateSearch">
+            <div className="mainHeaderDates">
+              <div className="mainHeaderDatesIcon">
+                <BiCalendar />
+              </div>
+              <DatePicker />
             </div>
-            <DatePicker />
-          </div>
-          <div
-            className="mainHeaderSearch"
-            onClick={() => {
-              console.log(
-                currentCity,
-                currentMarcaCar,
-                currentModeloCar,
-                currentAnoCar
-              );
-              setCarsFiltrados(filtrando(carros));
-            }}
-          >
-            <FiSearch />
+            <div
+              className="mainHeaderSearch"
+              onClick={() => {
+                console.log(
+                  currentCity,
+                  currentMarcaCar,
+                  currentModeloCar,
+                  currentAnoCar
+                );
+                setCarsFiltrados(filtrando(carros));
+              }}
+            >
+              <FiSearch />
+            </div>
           </div>
         </div>
-      </div>
-      <main>
-        {isModalOpen && <CardCar car={currentCar} />}
-        {isPayModal && <PaymentModal car={currentCar} />}
-        {isModalCar && <ModalCreateCar />}
-        {isModalLogin && <ModalLogin />}
-        {isProfileOpen && <ModalPerfil />}
-        <ul>
-          {itemsToShow.length ? (
-            itemsToShow
-          ) : (
-            <IoReload onClick={(e) => e.preventDefault()} />
-          )}
-          <button className="loadMoreMobile" onClick={() => showMore()}>
-            +
-          </button>
-        </ul>
-      </main>
-      <div className="loadMore" onClick={() => showMore()}>
-        Carregar mais...
-      </div>
-    </Main>
+        <main>
+          {isModalOpen && <CardCar car={currentCar} />}
+          {isPayModal && <PaymentModal car={currentCar} />}
+          {isModalCar && <ModalCreateCar />}
+          {isModalLogin && <ModalLogin />}
+          {isProfileOpen && <ModalPerfil />}
+          <ul>
+            {itemsToShow.length ? (
+              itemsToShow
+            ) : (
+              <IoReload onClick={(e) => e.preventDefault()} />
+            )}
+            <button className="loadMoreMobile" onClick={() => showMore()}>
+              +
+            </button>
+          </ul>
+        </main>
+        <div className="loadMore" onClick={() => showMore()}>
+          Carregar mais...
+        </div>
+      </Main>
+    </>
   );
 };
 export default Dashboard;

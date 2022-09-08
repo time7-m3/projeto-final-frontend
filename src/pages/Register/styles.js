@@ -1,11 +1,17 @@
 import styled from "styled-components";
 
 export const RegContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-top: 16px;
     height: 504px;
+    width: 90%;
+    max-width: 1150px;
 
     .divImage {
       display: none;
@@ -107,10 +113,14 @@ export const RegContainer = styled.div`
         }
       }
     }
-    @media (min-width: 768px) {
+  }
+
+  @media (min-width: 768px) {
+    .container {
       display: flex;
       justify-content: space-between;
-      max-width: 1142px;
+      max-width: 1150px;
+      width: 90%;
       height: 504px;
       border-radius: 16px;
       background-color: #ffffff;
